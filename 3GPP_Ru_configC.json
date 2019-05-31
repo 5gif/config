@@ -1,0 +1,27 @@
+{
+	"ENV": "Ru",
+	"SCENARIO": "eMBB",
+	"CONFIG": "B",
+    "LAYOUTTYPE": 0,
+    "ISD": 1,
+	"FcGHz":"LMLC",
+	"Duplexity": "TDD",
+	"ConnectionType": "DL",
+	"AntennaScheme": "8x4 MU-MIMO, Reciprocity based, 4T SRS",
+	"ReliabiltyAntennaScheme": "Undefined",
+	"BSAntennaConfig": [8,4,2,1,1,1,4],
+	"UEAntennaConfig": "Undefined",
+	"SCS": 30,
+	"FrameStructure": "DDDSU",
+	"MobFrameStructure": "Undefined",
+	"ITU-Reqs-Avg": 3.3,
+	"ITU-Reqs-5th-tile": 0.12, (1 says that 5th %tile is N-A)
+	"ITU-Reqs-Mob": "Undefined",
+	"ChannelCondn": "Undefined",
+	"N_Samples": 2,
+	"MobN_Samples": 1,
+	"BandwidthMHz": 20,
+	"ChannelModel": "A",
+	"numTRxP": "Undefined",
+	"MobilityClass": "Undefined"
+}
