@@ -1,6 +1,8 @@
 # config
 All the configuration files for ITU, 3GPP and simulator will be here
 
+Must be able to valide all the JSON files [here](https://jsonlint.com/) 
+
 
 ## 3GPP
 ```
