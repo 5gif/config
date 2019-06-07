@@ -25,3 +25,6 @@ Must be able to valide all the JSON files [here](https://jsonlint.com/)
 "UEHeightin": 7.5,  (seed value)
 }
 ```
+
+### Credits
+Used https://mholt.github.io/json-to-go/ . to create `golang` struct
