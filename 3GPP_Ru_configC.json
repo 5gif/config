@@ -15,7 +15,7 @@
 	"FrameStructure": "DDDSU",
 	"MobFrameStructure": "Undefined",
 	"ITU-Reqs-Avg": 3.3,
-	"ITU-Reqs-5th-tile": 0.12, (1 says that 5th %tile is N-A)
+	"ITU-Reqs-5th-tile": 0.12,
 	"ITU-Reqs-Mob": "Undefined",
 	"ChannelCondn": "Undefined",
 	"N_Samples": 2,
