@@ -7,7 +7,7 @@
 	"FcGHz":0.7,
 	"BandwidthMHz": 20,
 	"SCSKHz": 30,
-	"Duplexity": "TDD",,
+	"Duplexity": "TDD",
 	"AntennaScheme": "8x2 MU-MIMO, Reciprocity based, 2T SRS",
 	"ReliabiltyAntennaScheme": "1x4 SIMO",
 	"BSAntennaConfig": [8,4,2,1,1,1,4],

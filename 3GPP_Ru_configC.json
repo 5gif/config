@@ -15,5 +15,5 @@
 	"FrameStructure": "DDDSU",
 	"ChannelModel": "A",
 	"numTRxP": "Undefined",
-	"MobilityClass": "Undefined"
+	"MobilityClass": 0
 }
