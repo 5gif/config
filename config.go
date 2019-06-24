@@ -20,7 +20,7 @@ type NRconfig struct {
 	MobilityClass           int     `json:"MobilityClass"`
 }
 
-type ITUConfig struct {
+type ITUconfig struct {
 	ENV                 string  `json:"ENV"`
 	SCENARIO            string  `json:"SCENARIO"`
 	CONFIG              string  `json:"CONFIG"`
