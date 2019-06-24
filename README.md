@@ -26,5 +26,23 @@ Must be able to valide all the JSON files [here](https://jsonlint.com/)
 }
 ```
 
+## How to use 
+```
+import "github.com/5gif/config"
+```
+
+```
+var nrcfg config.NRconfig  // loads the 3GPP related parameters for the RURAL Evaluation Config. A (of ITU-R/WP5D)
+var path2file = "..path-to-3GPP_Ru_configA.json" // Add absolute path to the json file
+	vlib.LoadStructure(path2file, &nrcfg)
+	fmt.Println(nrcfg.FcGHz)
+
+var ituconfg config.ITUconfig  // loads the 3GPP related parameters for the RURAL Evaluation Config. A (of ITU-R/WP5D)
+var path2file = "..path-to-ITU_Ru_configA.json.json" // Add absolute path to the json file
+	vlib.LoadStructure(path2file, &ituconfg)
+	fmt.Println(ituconfig.FcGHz)
+
+```
+
 ### Credits
 Used https://mholt.github.io/json-to-go/ . to create `golang` struct
