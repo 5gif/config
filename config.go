@@ -12,6 +12,11 @@ import (
 var InDIR string
 var OutDIR string
 
+func SetDir(in, out string) {
+	InDIR = in
+	OutDIR = out
+}
+
 func init() {
 	InDIR = "."
 	OutDIR = "./results"
