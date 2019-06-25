@@ -1,11 +1,11 @@
 {
-	"ENV": "InH",
+	"ENV": "UMa",
 	"SCENARIO": "eMBB",
 	"CONFIG": "B",
 	"LAYOUTTYPE": 0,
 	"BSantennaType": "Undefined",
 	"UEantennaType": "Undefined",
-	"FcGHz": 30,
+	"CarriersGHz":30.0,
 	"Duplexity": "TDD",
 	"BSHeight": 25,
 	"UEHeightout": 1.5,
@@ -26,5 +26,5 @@
 	"UEAntennaEleGainDbi": 5,
 	"N0": -174,
 	"TrafficModel": 0,
-	"NumUEperCell": 10
+	"NumUEperCell": 30
 }
