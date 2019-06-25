@@ -103,8 +103,8 @@ func (i *ITUconfig) Save() {
 	currentdir := pwd
 	rel, _ := filepath.Rel(currentdir, OutDIR)
 	_ = rel
-	log.Printf("Switching to OUTPUT DIR ./%s", rel)
 	os.Chdir(OutDIR)
+	log.Println("Switching to OUTPUT DIR ", OutDIR)
 	vlib.SaveStructure(i, i.fname, true)
 	//SwitchBack()
 	os.Chdir(currentdir)
@@ -112,6 +112,7 @@ func (i *ITUconfig) Save() {
 
 func (i *ITUconfig) Read(f string) {
 	i.SetDefaults()
+	i.fname = f
 	viper.AddConfigPath(InDIR)
 	// viper.SetConfigName(f)
 	viper.SetConfigFile(InDIR + "/" + f)

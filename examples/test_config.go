@@ -24,6 +24,6 @@ func main() {
 
 	fmt.Println("\n\n=========== Use method 22 ===========")
 	icfg := config.ReadITUConfig("ITU_RMa_configA.json", "../json")
-	fmt.Printf("\n\nITU-R Method 2 Config = %#v", icfg)
-
+	fmt.Printf("\n\nITU-R Method 2 Config = %#v\n", icfg)
+	icfg.Save()
 }
