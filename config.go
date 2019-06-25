@@ -29,7 +29,7 @@ type ITUconfig struct {
 	LAYOUTTYPE          int     `json:"LAYOUTTYPE"`
 	BSantennaType       string  `json:"BSantennaType"`
 	UEantennaType       string  `json:"UEantennaType"`
-	FcGHz               int     `json:"FcGHz"`
+	FcGHz               float64 `json:"FcGHz"`
 	Duplexity           string  `json:"Duplexity"`
 	BSHeight            int     `json:"BSHeight"`
 	UEHeightout         float64 `json:"UEHeightout"`
