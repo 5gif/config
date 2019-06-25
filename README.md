@@ -45,5 +45,20 @@ fmt.Println(ituconfig.FcGHz)
 
 ```
 
+
+## Simplest way
+``` go
+	config.SetDir("../json", "results")
+
+  var icfg config.ITUconfig
+	icfg.Read("ITU_RMa_configB.json")
+	fmt.Printf("Config = %#v", icfg)
+	icfg.Save()
+
+	icfg2 := config.ReadITUConfig("ITU_RMa_configA.json", "../json")
+	fmt.Printf("\n\nITU-R Method 2 Config = %#v\n", icfg2)
+	icfg2.Save()
+```
+
 ### Credits
 Used https://mholt.github.io/json-to-go/ . to create `golang` struct
