@@ -1,5 +1,6 @@
 package config
 
+// NRconfig is crap...
 type NRconfig struct {
 	ENV                     string  `json:"ENV"`
 	SCENARIO                string  `json:"SCENARIO"`
@@ -20,6 +21,7 @@ type NRconfig struct {
 	MobilityClass           int     `json:"MobilityClass"`
 }
 
+// ITUconfig is crap...
 type ITUconfig struct {
 	ENV                 string  `json:"ENV"`
 	SCENARIO            string  `json:"SCENARIO"`
