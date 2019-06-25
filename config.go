@@ -1,5 +1,22 @@
 package config
 
+import (
+	"os"
+	"path/filepath"
+
+	log "github.com/Sirupsen/logrus"
+	"github.com/spf13/viper"
+	"github.com/wiless/vlib"
+)
+
+var InDIR string
+var OutDIR string
+
+func init() {
+	InDIR = "."
+	OutDIR = "./results"
+}
+
 // NRconfig is crap...
 type NRconfig struct {
 	ENV                     string  `json:"ENV"`
@@ -51,4 +68,70 @@ type ITUconfig struct {
 	N0                  int     `json:"N0"`
 	TrafficModel        int     `json:"TrafficModel"`
 	NumUEperCell        int     `json:"NumUEperCell"`
+	fname               string
+}
+
+// SetDefaults loads the default values for the simulation
+func (i *ITUconfig) SetDefaults() {
+	// TODO - Set default values
+	// C1.CarriersGHz = .7 // 700MHz
+	// C1.INDOORRatio = 0
+	// C1.INCARRatio = 0
+	// C1.INCARLossdB = 0
+	// C1.Out2IndoorLossDb = 0
+	// C1.NCells = 19
+	// C1.ActiveBSCells = -1 // Default all the cells are active
+	// C1.ActiveUECells = -1 // UEs are dropped in all the cells
+	// C1.Extended = false
+	// C1.ForceAllLOS = false
+	// C1.BandwidthMHz = 10
+	// C1.UENoiseFigureDb = 7
+	// C1.BSNoiseFigureDb = 5
+	// C1.ShadowLoss = true
+	// C1.LogInfo = false
+	// C1.NumUEperCell = 30
+	// C1.UEcells = []int{0, 10}
+	// C1.BScells = []int{0, 1, 2}
+	// C.TrueCells = -1   // Default to all the cells
+	// Do for others too
+}
+
+func (i *ITUconfig) Save() {
+	// log.Printf("ITUconfig : %#v ", i)
+	//SwitchOutput()
+	pwd, _ := os.Getwd()
+	currentdir := pwd
+	rel, _ := filepath.Rel(currentdir, OutDIR)
+	_ = rel
+	log.Printf("Switching to OUTPUT DIR ./%s", rel)
+	os.Chdir(OutDIR)
+	vlib.SaveStructure(i, i.fname, true)
+	//SwitchBack()
+	os.Chdir(currentdir)
+}
+
+func (i *ITUconfig) Read(f string) {
+	i.SetDefaults()
+	viper.AddConfigPath(InDIR)
+	// viper.SetConfigName(f)
+	viper.SetConfigFile(InDIR + "/" + f)
+	viper.SetConfigType("json")
+	err := viper.ReadInConfig()
+	if err != nil {
+		log.Print("ReadInConfig ", err)
+	}
+	err = viper.Unmarshal(i)
+	if err != nil {
+		log.Print("Error unmarshalling ", err)
+	}
+
+}
+
+// ReadITUConfig reads all the configuration for the app
+func ReadITUConfig(configname string, indir string) ITUconfig {
+	var cfg ITUconfig
+	InDIR = indir
+	// pwd, _ := os.Getwd()
+	cfg.Read(configname)
+	return cfg
 }
