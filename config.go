@@ -7,7 +7,7 @@ type NRconfig struct {
 	LAYOUTTYPE              int     `json:"LAYOUTTYPE"`
 	ISD                     int     `json:"ISD"`
 	FcGHz                   float64 `json:"FcGHz"`
-	BandwidthMHz            int     `json:"BandwidthMHz"`
+	BandwidthMHz            float64 `json:"BandwidthMHz"`
 	SCSKHz                  int     `json:"SCSKHz"`
 	Duplexity               string  `json:"Duplexity"`
 	AntennaScheme           string  `json:"AntennaScheme"`
