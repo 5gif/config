@@ -103,6 +103,7 @@ func (i *ITUconfig) Save() {
 	currentdir := pwd
 	rel, _ := filepath.Rel(currentdir, OutDIR)
 	_ = rel
+	os.Mkdir(OutDIR, 0700)
 	os.Chdir(OutDIR)
 	log.Println("Switching to OUTPUT DIR ", OutDIR)
 	vlib.SaveStructure(i, i.fname, true)
