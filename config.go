@@ -1,6 +1,5 @@
 package config
 
-<<<<<<< 357584ce34b87e9563b9a1d436237d153d0acc9a
 import (
 	"os"
 	"path/filepath"
@@ -23,10 +22,7 @@ func init() {
 	OutDIR = "./results"
 }
 
-// NRconfig is crap...
-=======
 // NRconfig structure
->>>>>>> samples
 type NRconfig struct {
 	ENV                     string  `json:"ENV"`
 	SCENARIO                string  `json:"SCENARIO"`
@@ -47,7 +43,7 @@ type NRconfig struct {
 	MobilityClass           int     `json:"MobilityClass"`
 }
 
-// ITUconfig is 
+// ITUconfig is
 type ITUconfig struct {
 	ENV                 string  `json:"ENV"`
 	SCENARIO            string  `json:"SCENARIO"`
