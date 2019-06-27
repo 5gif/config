@@ -1,7 +1,7 @@
 {
-  "SCENARIO" : "ITU_RMa_configA"
-  "SimulationTime" : 1
-  "FrameType" : 0
-  "SlotType" : 0
+  "SCENARIO" : "3GPP_RMa_configA",
+  "SimulationTime" : 1,
+  "FrameType" : 0,
+  "SlotType" : 0,
   "UEperSlot" : 4
 }
