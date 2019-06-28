@@ -5,12 +5,12 @@
 	"LAYOUTTYPE": 0,
 	"BSantennaType": "Undefined",
 	"UEantennaType": "Undefined",
-	"FcGHz": 70,
+	"CarriersGHz ": 70,
 	"Duplexity": "TDD",
 	"BSHeight": 3,
 	"UEHeightout": 1.5,
 	"UEHeightin": -1,
-	"BSTxPowerDbm": 21,
+	"TxPowerDbm": 21,
 	"BandwidthMHz": 80,
 	"UETxDbm": 23,
 	"BuildingTypeLoss": 1,
@@ -26,5 +26,10 @@
 	"UEAntennaEleGainDbi": 5,
 	"N0": -174,
 	"TrafficModel": 0,
-	"NumUEperCell": 10
+	"NumUEperCell": 30,
+	"INCARRatio":0,
+	"INCARLossdB":10,
+	"Out2IndoorLossDb":10, 
+	"fname":"ITU_InH _congigC",
+	"NCells":19
 }

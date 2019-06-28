@@ -10,7 +10,7 @@
 	"BSHeight": 25,
 	"UEHeightout": 1.5,
 	"UEHeightin": 7.5,
-	"BSTxPowerDbm": 44,
+	"TxPowerDbm": 44,
 	"BandwidthMHz": 20,
 	"UETxDbm": 23,
   	"BuildingTypeLoss": 0.8,
@@ -26,5 +26,10 @@
 	"UEAntennaEleGainDbi": 0,
 	"N0": -174,
 	"TrafficModel": 0,
-	"NumUEperCell": 10
+	"NumUEperCell": 30,
+	"INCARRatio":0,
+	"INCARLossdB":10,
+	"Out2IndoorLossDb":10, 
+	"fname":"ITU_UMa _congigA",
+	"NCells":19
 }
