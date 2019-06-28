@@ -1,0 +1,23 @@
+{
+	"SCENARIO": "3GPP_RMa_configA",
+	"SimulationTime": 1,
+	"FrameType": 0,
+	"SlotType": 0,
+	"UEperSlot": 4,
+	"ActiveBSCells": -1,
+	"ActiveUECells": -1,
+	"Extended": false,
+	"ForceAllLOS": false,
+	"ShadowLoss": true,
+	"LogInfo": false,
+	"UEcells": [
+		0,
+		10
+	],
+	"BScells": [
+		0,
+		1,
+		2
+	],
+	"TrueCells": -1
+}

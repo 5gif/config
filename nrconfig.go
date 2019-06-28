@@ -1,13 +1,13 @@
 package config
 
-import (
-	"os"
-	"path/filepath"
+// import (
+// 	"os"
+// 	"path/filepath"
 
-	log "github.com/Sirupsen/logrus"
-	"github.com/spf13/viper"
-	"github.com/wiless/vlib"
-)
+// 	log "github.com/Sirupsen/logrus"
+// 	"github.com/spf13/viper"
+// 	"github.com/wiless/vlib"
+// )
 
 // NRconfig structure
 type NRconfig struct {

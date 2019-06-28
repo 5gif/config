@@ -33,4 +33,9 @@ func main() {
 	fmt.Printf("\n\nITU-R Method 2 Config = %#v\n", icfg2)
 	icfg2.Save()
 
+	fmt.Println("\n\n=========== Use method 3 ===========")
+	icfg3 := config.ReadSIMConfig("SIM_RMa_configA.json", "../json")
+	fmt.Printf("\n\nSIM-R Method 2 Config = %#v\n", icfg3)
+	icfg3.Save()
+
 }
