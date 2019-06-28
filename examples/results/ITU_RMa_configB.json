@@ -10,7 +10,7 @@
 	"BSHeight": 35,
 	"UEHeightout": 1.5,
 	"UEHeightin": -1,
-	"BSTxPowerDbm": 0,
+	"BSTxPowerDbm": 49,
 	"BandwidthMHz": 20,
 	"UETxDbm": 23,
 	"BuildingTypeLoss": 1,
@@ -26,9 +26,9 @@
 	"UEAntennaEleGainDbi": 0,
 	"N0": -174,
 	"TrafficModel": 0,
-	"NumUEperCell": 10,
+	"NumUEperCell": 30,
 	"INCARRatio": 0,
-	"INCARLossdB": 0,
-	"Out2IndoorLossDb": 0,
+	"INCARLossdB": 10,
+	"Out2IndoorLossDb": 10,
 	"NCells": 19
 }

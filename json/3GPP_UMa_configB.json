@@ -15,7 +15,8 @@
 	"FrameStructure": "Undefined",
 	"ChannelModel": "Undefined",
 	"NumTRxP": "Undefined",
-	"MobilityClass": 0
+	"MobilityClass": 0,
+	"fname":"3GPP_UMa_configB"
 }
 
 

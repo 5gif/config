@@ -15,5 +15,6 @@
 	"FrameStructure": "DDDSU",
 	"ChannelModel": "A",
 	"NumTRxP": "Undefined",
-	"MobilityClass": 0
+	"MobilityClass": 0,
+	"fname":"3GPP_UMa_configA"
 }

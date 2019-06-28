@@ -38,4 +38,9 @@ func main() {
 	fmt.Printf("\n\nSIM-R Method 3 Config = %#v\n", icfg3)
 	icfg3.Save()
 
+	fmt.Println("\n\n=========== Use method 3 ===========")
+	icfg4 := config.ReadNRConfig("3GPP_UMa_configA.json", "../json")
+	fmt.Printf("\n\n3GPP-U Method 3 Config = %#v\n", icfg4)
+	icfg4.Save()
+
 }

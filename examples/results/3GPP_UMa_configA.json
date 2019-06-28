@@ -1,20 +1,27 @@
 {
-	"ENV": "InH",
+	"ENV": "DU",
 	"SCENARIO": "eMBB",
 	"CONFIG": "A",
 	"LAYOUTTYPE": 0,
 	"ISD": 0,
-	"FcGHz":4,
+	"FcGHz": 4,
 	"BandwidthMHz": 20,
 	"SCSKHz": 30,
 	"Duplexity": "TDD",
 	"AntennaScheme": "32x4 MU-MIMO, Reciprocity based, 4T SRS",
 	"ReliabiltyAntennaScheme": "1x8 SIMO",
-	"BSAntennaConfig": [4,4,2,1,1,4,4],
-	"UEAntennaConfig": [2,4,2,1,2,1,2],
+	"BSAntennaConfig": [
+		8,
+		8,
+		2,
+		1,
+		1,
+		2,
+		8
+	],
+	"UEAntennaConfig": "Undefined",
 	"FrameStructure": "DDDSU",
 	"ChannelModel": "A",
-	"NumTRxP": 12,
-	"MobilityClass": 0,
-	"fname":"3GPP_InH_configA"
+	"NumTRxP": "Undefined",
+	"MobilityClass": 0
 }
