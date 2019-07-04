@@ -31,7 +31,7 @@
 	"UEAntennaEleGainDbi": 0,
 	"N0": -174,
 	"TrafficModel": 0,
-	"NumUEperCell": 10,
+	"NumUEperCell": 30,
     "ShadowLoss": true,
 	"LogInfo": false,
 	"Extended": true,
