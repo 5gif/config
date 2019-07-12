@@ -9,11 +9,6 @@ import (
 	"github.com/wiless/vlib"
 )
 
-func init() {
-	InDIR = "."
-	OutDIR = "./results"
-}
-
 // NRconfig structure
 type NRconfig struct {
 	ENV                     string  `json:"ENV"`
@@ -36,6 +31,7 @@ type NRconfig struct {
 	fname                   string
 }
 
+// Save ...
 func (i *NRconfig) Save() {
 	//Switch Input
 	pwd, _ := os.Getwd()
@@ -68,8 +64,8 @@ func (i *NRconfig) Read(f string) {
 
 }
 
-// ReadNRConfig reads all the configuration for the app
-func ReadNRConfig(configname string, indir string) NRconfig {
+// ReadConfig reads all the configuration for the app
+func ReadConfig(configname string, indir string) interface{} {
 	var cfg NRconfig
 	InDIR = indir
 	cfg.Read(configname)

@@ -9,24 +9,13 @@ import (
 	"github.com/wiless/vlib"
 )
 
-//InDIR global variable
-var InDIR string
-
-//OutDIR global variable
-var OutDIR string
-
-//SetDir sets the directory
+// SetDir sets the directory
 func SetDir(in, out string) {
 	InDIR = in
 	OutDIR = out
 }
 
-func init() {
-	InDIR = "."
-	OutDIR = "./results"
-}
-
-// ITUconfig is
+// ITUconfig ....
 type ITUconfig struct {
 	ENV                 string  `json:"ENV"`
 	SCENARIO            string  `json:"SCENARIO"`
@@ -112,7 +101,8 @@ func (i *ITUconfig) Read(f string) {
 
 }
 
-// ReadITUConfig reads all the configuration for the app
+// ReadConfig reads all the configuration for the app
+// func ReadITUConfig(configname string, indir string) interface{} {
 func ReadITUConfig(configname string, indir string) ITUconfig {
 	var cfg ITUconfig
 	InDIR = indir
