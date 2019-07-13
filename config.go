@@ -10,19 +10,6 @@ import (
 	"github.com/spf13/viper"
 )
 
-// type configType interface {
-// 	SetDefaults()
-// 	Save()
-// 	ReadConfig(configname string, indir string) interface{}
-// }
-
-// func getConfig(t configType) {
-// 	fmt.Println(t)
-// 	t.ReadConfig()
-// 	fmt.Println(t)
-// 	t.Save()
-// }
-
 // InDIR This is a comment
 var InDIR string
 
@@ -42,7 +29,8 @@ type cfgSettings struct {
 
 func init() {
 	InDIR = "."
-	OutDIR = "./results/ITU"
+	OutDIR = "./results/default"
+	CurrDIR = "."
 }
 
 var c cfgSettings
@@ -89,8 +77,8 @@ func PrintStructsPretty(c interface{}) {
 }
 
 // Setup ...
-func Setup(fname string) ITUconfig {
-	// func Setup(fname string) (ITUconfig, NRconfig) {
+// func Setup(fname string) ITUconfig {
+func Setup(fname string) (ITUconfig, NRconfig, SIMconfig) {
 	c.ReadCfgSettings(fname)
 	InDIR = c.Indir
 	SwitchInput(InDIR)
@@ -100,10 +88,13 @@ func Setup(fname string) ITUconfig {
 	var ITUcfg ITUconfig
 	ITUcfg = ReadITUConfig(c.Itufname, c.Indir)
 
-	// var NRcfg NRconfig
-	// NRcfg = ReadNRConfig(c.Nrfname, c.Indir)
+	var NRcfg NRconfig
+	NRcfg = ReadNRConfig(c.Nrfname, c.Indir)
+
+	var SIMcfg SIMconfig
+	SIMcfg = ReadSIMConfig(c.Simfname, c.Indir)
 
 	SwitchBack()
-	// return ITUcfg, NRcfg
-	return ITUcfg
+	return ITUcfg, NRcfg, SIMcfg
+	// return ITUcfg
 }

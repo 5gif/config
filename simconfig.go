@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 
@@ -76,11 +77,10 @@ func (i *SIMconfig) Read(f string) {
 
 }
 
-// ReadConfig reads all the configuration for the app
-// func ReadConfig(configname string, indir string) interface{} {
-// 	var cfg SIMconfig
-// 	InDIR = indir
-// 	// pwd, _ := os.Getwd()
-// 	cfg.Read(configname)
-// 	return cfg
-// }
+// ReadSIMConfig reads all the configuration for the app
+func ReadSIMConfig(configname string, indir string) SIMconfig {
+	var cfg SIMconfig
+	fmt.Println(InDIR)
+	cfg.Read(configname)
+	return cfg
+}

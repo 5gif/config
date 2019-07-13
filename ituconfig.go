@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 
@@ -101,12 +102,10 @@ func (i *ITUconfig) Read(f string) {
 
 }
 
-// ReadConfig reads all the configuration for the app
-// func ReadITUConfig(configname string, indir string) interface{} {
+// ReadITUConfig reads all the configuration for the app
 func ReadITUConfig(configname string, indir string) ITUconfig {
 	var cfg ITUconfig
-	InDIR = indir
-	// pwd, _ := os.Getwd()
+	fmt.Println(InDIR)
 	cfg.Read(configname)
 	return cfg
 }

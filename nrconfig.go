@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 
@@ -64,10 +65,10 @@ func (i *NRconfig) Read(f string) {
 
 }
 
-// ReadConfig reads all the configuration for the app
-func ReadConfig(configname string, indir string) interface{} {
+// ReadNRConfig reads all the configuration for the app
+func ReadNRConfig(configname string, indir string) NRconfig {
 	var cfg NRconfig
-	InDIR = indir
+	fmt.Println(InDIR)
 	cfg.Read(configname)
 	return cfg
 }
