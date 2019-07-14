@@ -2,6 +2,7 @@ package config
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"log"
 	"os"
@@ -29,7 +30,7 @@ type cfgSettings struct {
 
 func init() {
 	InDIR = "."
-	OutDIR = "./results/default"
+	OutDIR = "./results"
 	CurrDIR = "."
 }
 
@@ -78,23 +79,29 @@ func PrintStructsPretty(c interface{}) {
 
 // Setup ...
 // func Setup(fname string) ITUconfig {
-func Setup(fname string) (ITUconfig, NRconfig, SIMconfig) {
+func Setup(fname string) (ITUconfig, NRconfig, SIMconfig, error) {
 	c.ReadCfgSettings(fname)
-	InDIR = c.Indir
+	SetDir(c.Indir, c.Outdir)
 	SwitchInput(InDIR)
 
 	log.Println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
-
+	var err1, err2, err3, err error
 	var ITUcfg ITUconfig
-	ITUcfg = ReadITUConfig(c.Itufname, c.Indir)
+	ITUcfg, err1 = ReadITUConfig(c.Itufname)
 
 	var NRcfg NRconfig
-	NRcfg = ReadNRConfig(c.Nrfname, c.Indir)
+	NRcfg, err2 = ReadNRConfig(c.Nrfname)
 
 	var SIMcfg SIMconfig
-	SIMcfg = ReadSIMConfig(c.Simfname, c.Indir)
+	SIMcfg, err3 = ReadSIMConfig(c.Simfname)
 
 	SwitchBack()
-	return ITUcfg, NRcfg, SIMcfg
+
+	if err1 != nil || err2 != nil || err3 != nil {
+		err = errors.New("Setup Error: Files not read correctly. Using default values")
+	} else {
+		err = nil
+	}
+	return ITUcfg, NRcfg, SIMcfg, err
 	// return ITUcfg
 }
