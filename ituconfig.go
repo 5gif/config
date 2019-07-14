@@ -3,7 +3,8 @@ package config
 import (
 	"fmt"
 	"os"
-	"path/filepath"
+	"strconv"
+	"time"
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/spf13/viper"
@@ -69,22 +70,28 @@ func (i *ITUconfig) SetDefaults() {
 
 }
 
-//Save config
+// Save config
 func (i *ITUconfig) Save() {
-	//Switch Input
-	pwd, _ := os.Getwd()
-	currentdir := pwd
-	rel, _ := filepath.Rel(currentdir, OutDIR)
-	_ = rel
-	os.Mkdir(OutDIR, 0700)
-	os.Chdir(OutDIR)
-	log.Println("Switching to OUTPUT DIR ", OutDIR)
+	CurrDIR, _ := os.Getwd()
+	t := time.Now()
+	year, month, day := t.Date()
+	root, _ := os.Getwd()
+	opdir := root + "/" + OutDIR + "/" + strconv.Itoa(day) + "_" + strconv.Itoa(int(month)) + "_" + strconv.Itoa(year)
+	fmt.Println(opdir)
+	_, err := os.Stat(opdir)
+	if err != nil {
+		os.MkdirAll(opdir, 0700)
+	} //else {
+	// 	fmt.Println(x)
+	// }
+
+	os.Chdir(opdir)
+	log.Println("Switching to OUTPUT DIR ", opdir)
 	vlib.SaveStructure(i, i.fname, true)
-	//SwitchBack()
-	os.Chdir(currentdir)
+	os.Chdir(CurrDIR)
 }
 
-func (i *ITUconfig) Read(f string) {
+func (i *ITUconfig) Read(f string) error {
 	i.SetDefaults()
 	i.fname = f
 	viper.AddConfigPath(InDIR)
@@ -93,19 +100,19 @@ func (i *ITUconfig) Read(f string) {
 	viper.SetConfigType("json")
 	err := viper.ReadInConfig()
 	if err != nil {
-		log.Print("ReadInConfig ", err)
+		log.Print("ReadInConfig Error: ", err)
 	}
 	err = viper.Unmarshal(i)
 	if err != nil {
 		log.Print("Error unmarshalling ", err)
 	}
-
+	return err
 }
 
 // ReadITUConfig reads all the configuration for the app
-func ReadITUConfig(configname string, indir string) ITUconfig {
+func ReadITUConfig(configname string) (ITUconfig, error) {
 	var cfg ITUconfig
-	fmt.Println(InDIR)
-	cfg.Read(configname)
-	return cfg
+	// fmt.Println(InDIR)
+	err := cfg.Read(configname)
+	return cfg, err
 }

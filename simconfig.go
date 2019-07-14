@@ -3,7 +3,8 @@ package config
 import (
 	"fmt"
 	"os"
-	"path/filepath"
+	"strconv"
+	"time"
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/spf13/viper"
@@ -46,20 +47,24 @@ func (i *SIMconfig) SetDefaults() {
 
 // Save ...
 func (i *SIMconfig) Save() {
-	//Switch Input
-	pwd, _ := os.Getwd()
-	currentdir := pwd
-	rel, _ := filepath.Rel(currentdir, OutDIR)
-	_ = rel
-	os.Mkdir(OutDIR, 0700)
+	CurrDIR, _ := os.Getwd()
+	t := time.Now()
+	year, month, day := t.Date()
+	root, _ := os.Getwd()
+	OutDIR := root + "/" + OutDIR + "/" + strconv.Itoa(day) + "_" + strconv.Itoa(int(month)) + "_" + strconv.Itoa(year)
+	fmt.Println(OutDIR)
+	_, err := os.Stat(OutDIR)
+	if err != nil {
+		os.MkdirAll(OutDIR, 0700)
+	}
 	os.Chdir(OutDIR)
 	log.Println("Switching to OUTPUT DIR ", OutDIR)
 	vlib.SaveStructure(i, i.fname, true)
 	//SwitchBack()
-	os.Chdir(currentdir)
+	os.Chdir(CurrDIR)
 }
 
-func (i *SIMconfig) Read(f string) {
+func (i *SIMconfig) Read(f string) error {
 	i.SetDefaults()
 	i.fname = f
 	viper.AddConfigPath(InDIR)
@@ -68,19 +73,21 @@ func (i *SIMconfig) Read(f string) {
 	viper.SetConfigType("json")
 	err := viper.ReadInConfig()
 	if err != nil {
-		log.Print("ReadInConfig ", err)
+		log.Print("ReadInConfig Error: ", err)
+		return err
 	}
 	err = viper.Unmarshal(i)
 	if err != nil {
 		log.Print("Error unmarshalling ", err)
+		return err
 	}
-
+	return nil
 }
 
 // ReadSIMConfig reads all the configuration for the app
-func ReadSIMConfig(configname string, indir string) SIMconfig {
+func ReadSIMConfig(configname string) (SIMconfig, error) {
 	var cfg SIMconfig
-	fmt.Println(InDIR)
-	cfg.Read(configname)
-	return cfg
+	// fmt.Println(InDIR)
+	err := cfg.Read(configname)
+	return cfg, err
 }
