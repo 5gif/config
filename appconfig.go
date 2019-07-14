@@ -135,7 +135,7 @@ func ReadAppConfig(configname string, indir string) (AppConfig, float64, float64
 	return C1, ISD, TxPowerDbm, CellRadius, CarriersGHz
 }
 
-// SaveAppConfig Golang is crap....
+// SaveAppConfig ....
 func SaveAppConfig() {
 	log.Printf("AppConfig : %#v ", C1)
 	//SwitchOutput()
