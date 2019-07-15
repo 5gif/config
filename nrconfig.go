@@ -1,7 +1,6 @@
 package config
 
 import (
-	"fmt"
 	"os"
 	"strconv"
 	"time"
@@ -40,7 +39,7 @@ func (i *NRconfig) Save() {
 	year, month, day := t.Date()
 	root, _ := os.Getwd()
 	OutDIR := root + "/" + OutDIR + "/" + strconv.Itoa(day) + "_" + strconv.Itoa(int(month)) + "_" + strconv.Itoa(year)
-	fmt.Println(OutDIR)
+	// fmt.Println(OutDIR)
 	_, err := os.Stat(OutDIR)
 	if err != nil {
 		os.MkdirAll(OutDIR, 0700)
@@ -48,7 +47,7 @@ func (i *NRconfig) Save() {
 	// 	fmt.Println(x)
 	// }
 	os.Chdir(OutDIR)
-	log.Println("Switching to OUTPUT DIR ", OutDIR)
+	log.Println("Saving NR config OUTPUT DIR: ", OutDIR)
 	vlib.SaveStructure(i, i.fname, true)
 	os.Chdir(CurrDIR)
 }

@@ -1,7 +1,6 @@
 package config
 
 import (
-	"fmt"
 	"os"
 	"strconv"
 	"time"
@@ -77,7 +76,7 @@ func (i *ITUconfig) Save() {
 	year, month, day := t.Date()
 	root, _ := os.Getwd()
 	opdir := root + "/" + OutDIR + "/" + strconv.Itoa(day) + "_" + strconv.Itoa(int(month)) + "_" + strconv.Itoa(year)
-	fmt.Println(opdir)
+	// fmt.Println(opdir)
 	_, err := os.Stat(opdir)
 	if err != nil {
 		os.MkdirAll(opdir, 0700)
@@ -86,7 +85,7 @@ func (i *ITUconfig) Save() {
 	// }
 
 	os.Chdir(opdir)
-	log.Println("Switching to OUTPUT DIR ", opdir)
+	log.Println("Saving ITU config to OUTPUT DIR: ", opdir)
 	vlib.SaveStructure(i, i.fname, true)
 	os.Chdir(CurrDIR)
 }
