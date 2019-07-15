@@ -41,8 +41,15 @@ type AppConfig struct {
 	BScells       []int
 }
 
+type NewAppConfig struct {
+	ITUconfig
+	NRconfig
+	SIMconfig
+}
+
 // C1 Global Configuration variable
 var C1 AppConfig
+var C2 NewAppConfig
 
 // SetDefaults loads the default values for the simulation
 func (C1 *AppConfig) SetDefaults() {
@@ -133,6 +140,65 @@ func ReadAppConfig(configname string, indir string) (AppConfig, float64, float64
 	CarriersGHz := []float64{C1.CarriersGHz}
 	SaveAppConfig()
 	return C1, ISD, TxPowerDbm, CellRadius, CarriersGHz
+}
+
+// GenerateAppConfig - Generates configuration for the app using ITU, NR and SIM config files
+func GenerateAppConfig(itucfg ITUconfig, nrcfg NRconfig, simcfg SIMconfig) {
+	// C1.SetDefaults()
+	log.Print("Generating APP config ")
+	fmt.Println("Hello world!!")
+	C2.ITUconfig = itucfg
+	C2.NRconfig = nrcfg
+	C2.SIMconfig = simcfg
+	PrintStructsPretty(C2)
+	// 	if C1.ActiveBSCells == -1 {
+	// 		if len(C1.BScells) > 0 {
+	// 			C1.ActiveBSCells = len(C1.BScells)
+	// 		} else {
+	// 			C1.ActiveBSCells = C1.NCells
+	// 			C1.BScells = vlib.NewSegmentI(0, C1.ActiveBSCells)
+	// 		}
+	// 	} else {
+	// 		C1.BScells = vlib.NewSegmentI(0, C1.ActiveBSCells)
+	// 	}
+
+	// 	if C1.ActiveUECells == -1 {
+	// 		if len(C1.UEcells) > 0 {
+	// 			C1.ActiveUECells = len(C1.UEcells)
+	// 		} else {
+	// 			C1.ActiveUECells = C1.NCells
+	// 			C1.UEcells = vlib.NewSegmentI(0, C1.ActiveUECells)
+	// 		}
+	// 	} else {
+	// 		C1.UEcells = vlib.NewSegmentI(0, C1.ActiveUECells)
+	// 		fmt.Println(C1.UEcells)
+	// 	}
+
+	// 	// Set all the default values
+	// 	// {
+	// 	// 	viper.SetDefault("TxPowerDbm", TxPowerDbm)
+	// 	// 	viper.SetDefault("ISD", ISD)
+	// 	// 	viper.SetDefault("INDOORRatio", C.INDOORRatio)
+	// 	// 	viper.SetDefault("INCARRatio", C.INCARRatio)
+	// 	// 	viper.SetDefault("INCARLossdB", C.INCARLossdB)
+	// 	// 	viper.SetDefault("Out2IndoorLossDb", C.Out2IndoorLossDb)
+	// 	// 	viper.SetDefault("UENoiseFigureDb", C.UENoiseFigureDb)
+	// 	// 	viper.SetDefault("BSNoiseFigureDb", C.BSNoiseFigureDb)
+	// 	// 	viper.SetDefault("ActiveUECells", C.ActiveUECells)
+	// 	// 	viper.SetDefault("ActiveBSCells", C.ActiveBSCells)
+	// 	// 	viper.SetDefault("ForceAllLOS", C.ForceAllLOS)
+	// 	// 	CellRadius = ISD / math.Sqrt(3.0)
+	// 	// 	log.Println("AppConfig : ", C)
+	// 	// }
+
+	// 	// Load from the external configuration files
+	// 	ISD := viper.GetFloat64("ISD")
+	// 	TxPowerDbm := viper.GetFloat64("TxpowerDBm")
+	// 	CellRadius := ISD / math.Sqrt(3.0)
+	// 	CarriersGHz := []float64{C1.CarriersGHz}
+	// 	SaveAppConfig()
+	// 	return C1, ISD, TxPowerDbm, CellRadius, CarriersGHz
+
 }
 
 // SaveAppConfig ....
