@@ -3,7 +3,8 @@ package config
 import (
 	"fmt"
 	"os"
-	"path/filepath"
+	"strconv"
+	"time"
 
 	log "github.com/Sirupsen/logrus"
 
@@ -41,6 +42,7 @@ type AppConfig struct {
 	BScells       []int
 }
 
+// NewAppConfig - contains nested structures of other config structures
 type NewAppConfig struct {
 	ITUconfig
 	NRconfig
@@ -49,6 +51,8 @@ type NewAppConfig struct {
 
 // C1 Global Configuration variable
 var C1 AppConfig
+
+// C2 Global Configuration variable
 var C2 NewAppConfig
 
 // SetDefaults loads the default values for the simulation
@@ -142,6 +146,70 @@ func ReadAppConfig(configname string, indir string) (AppConfig, float64, float64
 	return C1, ISD, TxPowerDbm, CellRadius, CarriersGHz
 }
 
+// SetAppConfig reads all the configuration for the app
+func SetAppConfig(itucfg ITUconfig, nrcfg NRconfig, simcfg SIMconfig) (AppConfig, float64, []float64) {
+	C1.SetDefaults()
+	log.Print("Setting App configurations")
+
+	C1.CarriersGHz = itucfg.CarriersGHz
+	C1.ISD = itucfg.ISD
+	C1.TxPowerDbm = itucfg.TxPowerDbm
+	C1.INDOORRatio = itucfg.INDOORRatio
+	C1.BSNoiseFigureDb = itucfg.BSNoiseFigureDb
+	C1.UENoiseFigureDb = itucfg.UENoiseFigureDb
+	C1.NumUEperCell = itucfg.NumUEperCell
+	C1.INCARRatio = itucfg.INCARRatio
+	C1.INCARLossdB = itucfg.INCARLossdB
+	C1.Out2IndoorLossDb = itucfg.Out2IndoorLossDb
+	C1.NCells = itucfg.NCells
+
+	C1.BandwidthMHz = nrcfg.BandwidthMHz
+
+	C1.ActiveBSCells = simcfg.ActiveBSCells
+	C1.ActiveUECells = simcfg.ActiveUECells
+	C1.Extended = simcfg.Extended
+	C1.ForceAllLOS = simcfg.ForceAllLOS
+	C1.ShadowLoss = simcfg.ShadowLoss
+	C1.LogInfo = simcfg.LogInfo
+	C1.UEcells = simcfg.UEcells
+	C1.BScells = simcfg.BScells
+
+	// C1.AntennaVTilt=
+	// C1.BSHeight=
+	// C1.UEHeight=
+
+	if C1.ActiveBSCells == -1 {
+		if len(C1.BScells) > 0 {
+			C1.ActiveBSCells = len(C1.BScells)
+		} else {
+			C1.ActiveBSCells = C1.NCells
+			C1.BScells = vlib.NewSegmentI(0, C1.ActiveBSCells)
+		}
+	} else {
+		C1.BScells = vlib.NewSegmentI(0, C1.ActiveBSCells)
+	}
+
+	if C1.ActiveUECells == -1 {
+		if len(C1.UEcells) > 0 {
+			C1.ActiveUECells = len(C1.UEcells)
+		} else {
+			C1.ActiveUECells = C1.NCells
+			C1.UEcells = vlib.NewSegmentI(0, C1.ActiveUECells)
+		}
+	} else {
+		C1.UEcells = vlib.NewSegmentI(0, C1.ActiveUECells)
+		fmt.Println(C1.UEcells)
+	}
+
+	// Load from the external configuration files
+	// ISD := viper.GetFloat64("ISD")
+	// TxPowerDbm := viper.GetFloat64("TxpowerDBm")
+	CellRadius := C1.ISD / math.Sqrt(3.0)
+	CarriersGHz := []float64{C1.CarriersGHz}
+	SaveAppConfig()
+	return C1, CellRadius, CarriersGHz
+}
+
 // GenerateAppConfig - Generates configuration for the app using ITU, NR and SIM config files
 func GenerateAppConfig(itucfg ITUconfig, nrcfg NRconfig, simcfg SIMconfig) {
 	// C1.SetDefaults()
@@ -151,67 +219,27 @@ func GenerateAppConfig(itucfg ITUconfig, nrcfg NRconfig, simcfg SIMconfig) {
 	C2.NRconfig = nrcfg
 	C2.SIMconfig = simcfg
 	PrintStructsPretty(C2)
-	// 	if C1.ActiveBSCells == -1 {
-	// 		if len(C1.BScells) > 0 {
-	// 			C1.ActiveBSCells = len(C1.BScells)
-	// 		} else {
-	// 			C1.ActiveBSCells = C1.NCells
-	// 			C1.BScells = vlib.NewSegmentI(0, C1.ActiveBSCells)
-	// 		}
-	// 	} else {
-	// 		C1.BScells = vlib.NewSegmentI(0, C1.ActiveBSCells)
-	// 	}
-
-	// 	if C1.ActiveUECells == -1 {
-	// 		if len(C1.UEcells) > 0 {
-	// 			C1.ActiveUECells = len(C1.UEcells)
-	// 		} else {
-	// 			C1.ActiveUECells = C1.NCells
-	// 			C1.UEcells = vlib.NewSegmentI(0, C1.ActiveUECells)
-	// 		}
-	// 	} else {
-	// 		C1.UEcells = vlib.NewSegmentI(0, C1.ActiveUECells)
-	// 		fmt.Println(C1.UEcells)
-	// 	}
-
-	// 	// Set all the default values
-	// 	// {
-	// 	// 	viper.SetDefault("TxPowerDbm", TxPowerDbm)
-	// 	// 	viper.SetDefault("ISD", ISD)
-	// 	// 	viper.SetDefault("INDOORRatio", C.INDOORRatio)
-	// 	// 	viper.SetDefault("INCARRatio", C.INCARRatio)
-	// 	// 	viper.SetDefault("INCARLossdB", C.INCARLossdB)
-	// 	// 	viper.SetDefault("Out2IndoorLossDb", C.Out2IndoorLossDb)
-	// 	// 	viper.SetDefault("UENoiseFigureDb", C.UENoiseFigureDb)
-	// 	// 	viper.SetDefault("BSNoiseFigureDb", C.BSNoiseFigureDb)
-	// 	// 	viper.SetDefault("ActiveUECells", C.ActiveUECells)
-	// 	// 	viper.SetDefault("ActiveBSCells", C.ActiveBSCells)
-	// 	// 	viper.SetDefault("ForceAllLOS", C.ForceAllLOS)
-	// 	// 	CellRadius = ISD / math.Sqrt(3.0)
-	// 	// 	log.Println("AppConfig : ", C)
-	// 	// }
-
-	// 	// Load from the external configuration files
-	// 	ISD := viper.GetFloat64("ISD")
-	// 	TxPowerDbm := viper.GetFloat64("TxpowerDBm")
-	// 	CellRadius := ISD / math.Sqrt(3.0)
-	// 	CarriersGHz := []float64{C1.CarriersGHz}
-	// 	SaveAppConfig()
-	// 	return C1, ISD, TxPowerDbm, CellRadius, CarriersGHz
-
 }
 
 // SaveAppConfig ....
 func SaveAppConfig() {
-	log.Printf("AppConfig : %#v ", C1)
+	// PrintStructsPretty(C1)
+	t := time.Now()
+	year, month, day := t.Date()
+	root, _ := os.Getwd()
+	opdir := root + "/" + OutDIR + "/" + strconv.Itoa(day) + "_" + strconv.Itoa(int(month)) + "_" + strconv.Itoa(year)
+	// fmt.Println(opdir)
+	_, err := os.Stat(opdir)
+	if err != nil {
+		os.MkdirAll(opdir, 0700)
+	}
 	//SwitchOutput()
-	pwd, _ := os.Getwd()
-	currentdir := pwd
-	rel, _ := filepath.Rel(currentdir, "results")
-	log.Printf("Switching to OUTPUT DIR ./%s", rel)
-	os.Chdir("results")
+	// pwd, _ := os.Getwd()
+	// currentdir := pwd
+	os.Chdir(opdir)
+	log.Println("Saving APP config to OUTPUT DIR: ", opdir)
 	vlib.SaveStructure(C1, "OutputSetting.json", true)
 	//SwitchBack()
-	os.Chdir(currentdir)
+	os.Chdir(CurrDIR)
 
 }
