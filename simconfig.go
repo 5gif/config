@@ -28,6 +28,7 @@ type SIMconfig struct {
 	BScells        []int
 	TrueCells      int
 	SchType        int
+	IsDownLink     bool
 }
 
 //SetDefaults loads the default values for the simulation
@@ -42,6 +43,7 @@ func (i *SIMconfig) SetDefaults() {
 	i.UEcells = []int{0, 10}
 	i.BScells = []int{0, 1, 2}
 	i.TrueCells = -1 // Default to all the cells
+	i.IsDownLink = true
 
 }
 
