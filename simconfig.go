@@ -16,7 +16,7 @@ type SIMconfig struct {
 	SimulationTime int    `json:"SimulationTime"`
 	FrameType      int    `json:"FrameType"`
 	SlotType       int    `json:"SlotType"`
-	UEperSlot      int    `json:"UEperSlot"`
+	NumUEperSlot   int    `json:"UEperSlot"`
 	fname          string
 	ActiveBSCells  int
 	ActiveUECells  int
@@ -27,6 +27,7 @@ type SIMconfig struct {
 	UEcells        []int
 	BScells        []int
 	TrueCells      int
+	SchType        int
 }
 
 //SetDefaults loads the default values for the simulation
