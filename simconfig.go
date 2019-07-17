@@ -57,7 +57,7 @@ func (i *SIMconfig) Save() {
 		os.MkdirAll(OutDIR, 0700)
 	}
 	os.Chdir(OutDIR)
-	log.Println("Saving sim config to OUTPUT DIR: ", OutDIR)
+	log.Println("Saving SIM config to OUTPUT DIR: ", OutDIR)
 	vlib.SaveStructure(i, i.fname, true)
 	//SwitchBack()
 	os.Chdir(CurrDIR)
