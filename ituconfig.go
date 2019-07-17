@@ -29,27 +29,27 @@ type ITUconfig struct {
 	BSHeight            int     `json:"BSHeight"`
 	UEHeightout         float64 `json:"UEHeightout"`
 	UEHeightin          float64 `json:"UEHeightin"`
-	TxPowerDbm          int     `json:"BSTxPowerDbm"`
+	TxPowerDbm          float64 `json:"BSTxPowerDbm"`
 	BandwidthMHz        int     `json:"BandwidthMHz"`
 	UETxDbm             int     `json:"UETxDbm"`
 	BuildingTypeLoss    float64 `json:"BuildingTypeLoss"`
-	ISD                 int     `json:"ISD"`
+	ISD                 float64 `json:"ISD"`
 	NumBSelements       int     `json:"NumBSelements"`
 	NumUEelements       int     `json:"NumUEelements"`
 	INDOORRatio         float64 `json:"INDOORRatio"`
 	IndoorSpeed         int     `json:"IndoorSpeed"`
 	Outdoorspeed        int     `json:"Outdoorspeed"`
-	BSNoiseFigureDb     int     `json:"BSNoiseFigureDb"`
-	UENoiseFigureDb     int     `json:"UENoiseFigureDb"`
+	BSNoiseFigureDb     float64 `json:"BSNoiseFigureDb"`
+	UENoiseFigureDb     float64 `json:"UENoiseFigureDb"`
 	BSAntennaEleGainDbi int     `json:"BSAntennaEleGainDbi"`
 	UEAntennaEleGainDbi int     `json:"UEAntennaEleGainDbi"`
 	N0                  int     `json:"N0"`
 	TrafficModel        int     `json:"TrafficModel"`
 	NumUEperCell        int     `json:"NumUEperCell"`
 	fname               string
-	INCARRatio          int
-	INCARLossdB         int
-	Out2IndoorLossDb    int
+	INCARRatio          float64
+	INCARLossdB         float64
+	Out2IndoorLossDb    float64
 	NCells              int
 }
 
