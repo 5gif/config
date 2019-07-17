@@ -9,6 +9,8 @@ import (
 	"reflect"
 
 	"github.com/spf13/viper"
+	"github.com/wiless/cellular/antenna"
+	"github.com/wiless/vlib"
 )
 
 // InDIR This is a comment
@@ -79,7 +81,7 @@ func PrintStructsPretty(c interface{}) {
 
 // Setup ...
 // func Setup(fname string) ITUconfig {
-func Setup(fname string) (ITUconfig, NRconfig, SIMconfig, error) {
+func Setup(fname string) (ITUconfig, NRconfig, SIMconfig, antenna.SettingAAS, error) {
 	c.ReadCfgSettings(fname)
 	SetDir(c.Indir, c.Outdir)
 	SwitchInput(InDIR)
@@ -95,6 +97,10 @@ func Setup(fname string) (ITUconfig, NRconfig, SIMconfig, error) {
 	var SIMcfg SIMconfig
 	SIMcfg, err3 = ReadSIMConfig(c.Simfname)
 
+	var AAS antenna.SettingAAS
+	// SIMcfg, err3 = ReadSIMConfig(c.Simfname)
+	vlib.LoadStructure("sector.json", &AAS)
+
 	SwitchBack()
 
 	if err1 != nil || err2 != nil || err3 != nil {
@@ -102,6 +108,6 @@ func Setup(fname string) (ITUconfig, NRconfig, SIMconfig, error) {
 	} else {
 		err = nil
 	}
-	return ITUcfg, NRcfg, SIMcfg, err
+	return ITUcfg, NRcfg, SIMcfg, AAS, err
 	// return ITUcfg
 }
