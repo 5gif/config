@@ -16,19 +16,19 @@ type SIMconfig struct {
 	SimulationTime int    `json:"SimulationTime"`
 	FrameType      int    `json:"FrameType"`
 	SlotType       int    `json:"SlotType"`
-	NumUEperSlot   int    `json:"UEperSlot"`
-	fname          string
-	ActiveBSCells  int
-	ActiveUECells  int
-	Extended       bool
-	ForceAllLOS    bool
-	ShadowLoss     bool
-	LogInfo        bool
-	UEcells        []int
-	BScells        []int
-	TrueCells      int
-	SchType        int
-	IsDownLink     bool
+	UEperSlot      int    `json:"UEperSlot"`
+	Fname          string `json:"fname"`
+	ActiveBSCells  int    `json:"ActiveBSCells"`
+	ActiveUECells  int    `json:"ActiveUECells"`
+	Extended       bool   `json:"Extended"`
+	ForceAllLOS    bool   `json:"ForceAllLOS"`
+	ShadowLoss     bool   `json:"ShadowLoss"`
+	LogInfo        bool   `json:"LogInfo"`
+	UEcells        []int  `json:"UEcells"`
+	BScells        []int  `json:"BScells"`
+	TrueCells      int    `json:"TrueCells"`
+	SchedulerType  int    `json:"SchedulerType"`
+	IsDownLink     bool   `json:"IsDownLink"`
 }
 
 //SetDefaults loads the default values for the simulation
