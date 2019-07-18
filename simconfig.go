@@ -16,7 +16,7 @@ type SIMconfig struct {
 	SimulationTime int    `json:"SimulationTime"`
 	FrameType      int    `json:"FrameType"`
 	SlotType       int    `json:"SlotType"`
-	UEperSlot      int    `json:"UEperSlot"`
+	NumUEperSlot   int    `json:"UEperSlot"`
 	Fname          string `json:"fname"`
 	ActiveBSCells  int    `json:"ActiveBSCells"`
 	ActiveUECells  int    `json:"ActiveUECells"`
@@ -61,14 +61,14 @@ func (i *SIMconfig) Save() {
 	}
 	os.Chdir(OutDIR)
 	log.Println("Saving SIM config to OUTPUT DIR: ", OutDIR)
-	vlib.SaveStructure(i, i.fname, true)
+	vlib.SaveStructure(i, i.Fname, true)
 	//SwitchBack()
 	os.Chdir(CurrDIR)
 }
 
 func (i *SIMconfig) Read(f string) error {
 	i.SetDefaults()
-	i.fname = f
+	i.Fname = f
 	viper.AddConfigPath(InDIR)
 	// viper.SetConfigName(f)
 	viper.SetConfigFile(InDIR + "/" + f)
