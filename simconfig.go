@@ -16,7 +16,7 @@ type SIMconfig struct {
 	SimulationTime int    `json:"SimulationTime"`
 	FrameType      int    `json:"FrameType"`
 	SlotType       int    `json:"SlotType"`
-	NumUEperSlot   int    `json:"UEperSlot"`
+	NumUEperSlot   int    `json:"NumUEperSlot"`
 	Fname          string `json:"fname"`
 	ActiveBSCells  int    `json:"ActiveBSCells"`
 	ActiveUECells  int    `json:"ActiveUECells"`
