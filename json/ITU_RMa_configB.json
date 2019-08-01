@@ -27,7 +27,7 @@
 	"N0": -174,
 	"TrafficModel": 0,
 	"NumUEperCell": 30,
-	"INCARRatio":0,
+	"INCARRatio":0.5,
 	"INCARLossdB":10,
 	"Out2IndoorLossDb":10, 
 	"fname":"ITU_RMa _congigB",
