@@ -12,23 +12,24 @@ import (
 
 // SIMconfig ...
 type SIMconfig struct {
-	SCENARIO       string `json:"SCENARIO"`
-	SimulationTime int    `json:"SimulationTime"`
-	FrameType      int    `json:"FrameType"`
-	SlotType       int    `json:"SlotType"`
-	NumUEperSlot   int    `json:"NumUEperSlot"`
-	Fname          string `json:"fname"`
-	ActiveBSCells  int    `json:"ActiveBSCells"`
-	ActiveUECells  int    `json:"ActiveUECells"`
-	Extended       bool   `json:"Extended"`
-	ForceAllLOS    bool   `json:"ForceAllLOS"`
-	ShadowLoss     bool   `json:"ShadowLoss"`
-	LogInfo        bool   `json:"LogInfo"`
-	UEcells        []int  `json:"UEcells"`
-	BScells        []int  `json:"BScells"`
-	TrueCells      int    `json:"TrueCells"`
-	SchedulerType  int    `json:"SchedulerType"`
-	IsDownLink     bool   `json:"IsDownLink"`
+	SCENARIO       string  `json:"SCENARIO"`
+	SimulationTime int     `json:"SimulationTime"`
+	FrameType      int     `json:"FrameType"`
+	SlotType       int     `json:"SlotType"`
+	NumUEperSlot   int     `json:"NumUEperSlot"`
+	Fname          string  `json:"fname"`
+	ActiveBSCells  int     `json:"ActiveBSCells"`
+	ActiveUECells  int     `json:"ActiveUECells"`
+	Extended       bool    `json:"Extended"`
+	ForceAllLOS    bool    `json:"ForceAllLOS"`
+	ShadowLoss     bool    `json:"ShadowLoss"`
+	LogInfo        bool    `json:"LogInfo"`
+	UEcells        []int   `json:"UEcells"`
+	BScells        []int   `json:"BScells"`
+	TrueCells      int     `json:"TrueCells"`
+	SchedulerType  int     `json:"SchedulerType"`
+	IsDownLink     bool    `json:"IsDownLink"`
+	AntennaVTilt   float64 `json:"AntennaVTilt"`
 }
 
 //SetDefaults loads the default values for the simulation

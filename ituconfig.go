@@ -26,7 +26,7 @@ type ITUconfig struct {
 	UEantennaType       string  `json:"UEantennaType"`
 	CarriersGHz         float64 `json:"FcGHz"`
 	Duplexity           string  `json:"Duplexity"`
-	BSHeight            int     `json:"BSHeight"`
+	BSHeight            float64 `json:"BSHeight"`
 	UEHeightout         float64 `json:"UEHeightout"`
 	UEHeightin          float64 `json:"UEHeightin"`
 	TxPowerDbm          float64 `json:"BSTxPowerDbm"`
@@ -37,8 +37,8 @@ type ITUconfig struct {
 	NumBSelements       int     `json:"NumBSelements"`
 	NumUEelements       int     `json:"NumUEelements"`
 	INDOORRatio         float64 `json:"INDOORRatio"`
-	IndoorSpeed         int     `json:"IndoorSpeed"`
-	Outdoorspeed        int     `json:"Outdoorspeed"`
+	IndoorSpeed         float64 `json:"IndoorSpeed"`
+	Outdoorspeed        float64 `json:"Outdoorspeed"`
 	BSNoiseFigureDb     float64 `json:"BSNoiseFigureDb"`
 	UENoiseFigureDb     float64 `json:"UENoiseFigureDb"`
 	BSAntennaEleGainDbi int     `json:"BSAntennaEleGainDbi"`

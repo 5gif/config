@@ -162,6 +162,8 @@ func SetAppConfig(itucfg ITUconfig, nrcfg NRconfig, simcfg SIMconfig) (AppConfig
 	C1.INCARLossdB = itucfg.INCARLossdB
 	C1.Out2IndoorLossDb = itucfg.Out2IndoorLossDb
 	C1.NCells = itucfg.NCells
+	C1.BSHeight = itucfg.BSHeight
+	C1.UEHeight = itucfg.UEHeightout
 
 	C1.BandwidthMHz = nrcfg.BandwidthMHz
 
@@ -173,10 +175,7 @@ func SetAppConfig(itucfg ITUconfig, nrcfg NRconfig, simcfg SIMconfig) (AppConfig
 	C1.LogInfo = simcfg.LogInfo
 	C1.UEcells = simcfg.UEcells
 	C1.BScells = simcfg.BScells
-
-	// C1.AntennaVTilt=
-	// C1.BSHeight=
-	// C1.UEHeight=
+	C1.AntennaVTilt = simcfg.AntennaVTilt
 
 	if C1.ActiveBSCells == -1 {
 		if len(C1.BScells) > 0 {

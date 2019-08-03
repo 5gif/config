@@ -15,5 +15,6 @@
 	"BScells": [0,18],
 	"TrueCells":0,
 	"SchedulerType":1,
-	"IsDownLink":true
+	"IsDownLink":true,
+	"AntennaVTilt": 15
 }
