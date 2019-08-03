@@ -9,14 +9,9 @@
 	"Duplexity": "TDD",
 	"BSHeight": 35.0,
 	"UEHeightout": 1.5,
-<<<<<<< HEAD
-	"UEHeightin": -1,
-	"TxPowerDbm": 46,
-=======
 	"UEHeightin": -1.0,
 	"TxPowerDbm": 49,
 	"BandwidthMHz": 20,
->>>>>>> Updates
 	"UETxDbm": 23,
 	"BuildingTypeLoss": 1,
 	"ISD": 1732,
