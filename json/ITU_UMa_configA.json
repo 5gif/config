@@ -14,8 +14,8 @@
 	"UETxDbm": 23,
   	"BuildingTypeLoss": 0.8,
 	"ISD": 200,
-	"NumBSelements": 128,
-	"NumUEelements": 4,
+	"NumBSelements": 256,
+	"NumUEelements": 8,
 	"INDOORRatio": 0.8,
 	"IndoorSpeed":3,
 	"Outdoorspeed": 30,
@@ -30,5 +30,6 @@
 	"INCARLossdB":10,
 	"Out2IndoorLossDb":10, 
 	"fname":"ITU_UMa _configA",
-	"NCells":19
+	"NCells":19,
+	"BandwidthMHz": 20
 }

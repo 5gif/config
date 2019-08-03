@@ -1,5 +1,5 @@
 {
-	"ENV": "Ru",
+	"ENV": "RMa",
 	"SCENARIO": "eMBB",
 	"CONFIG": "A",
 	"LAYOUTTYPE": 0,
@@ -30,6 +30,6 @@
 	"INCARRatio":0.5,
 	"INCARLossdB":10,
 	"Out2IndoorLossDb":10, 
-	"fname":"ITU_RMa _congigA",
+	"fname":"ITU_RMa _configA",
 	"NCells":19
 }

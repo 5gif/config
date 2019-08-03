@@ -1,5 +1,5 @@
 {
-	"ENV": "Ru",
+	"ENV": "RMa",
 	"SCENARIO": "eMBB",
 	"CONFIG": "C",
 	"LAYOUTTYPE": 0,
@@ -11,14 +11,13 @@
 	"UEHeightout": 1.5,
 	"UEHeightin": -1,
 	"TxPowerDbm": 49,
-	"BandwidthMHz": 20,
 	"UETxDbm": 23,
 	"BuildingTypeLoss": 1,
 	"ISD": 6000,
 	"NumBSelements": 64,
 	"NumUEelements": 4,
-	"INDOORRatio": [0.4,0.40,2],
-	"IndoorSpeed":[3,3],
+	"INDOORRatio": 0.4,
+	"IndoorSpeed":3,
 	"Outdoorspeed": 30,
 	"BSNoiseFigureDb": 5,
 	"UENoiseFigureDb": 7,
@@ -27,9 +26,10 @@
 	"N0": -174,
 	"TrafficModel": 0,
 	"NumUEperCell": 30,
-	"INCARRatio":0,
+	"INCARRatio":0.2,
 	"INCARLossdB":10,
 	"Out2IndoorLossDb":10, 
-	"fname":"ITU_RMa _congigC",
-	"NCells":19
+	"fname":"ITU_RMa _configC",
+	"NCells":19,
+	"BandwidthMHz": 20
 }

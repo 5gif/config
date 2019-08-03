@@ -29,6 +29,7 @@
 	"INCARRatio":0,
 	"INCARLossdB":10,
 	"Out2IndoorLossDb":10, 
-	"fname":"ITU_InH _congigA",
-	"NCells":19
+	"fname":"ITU_InH _configA",
+	"NCells":19,
+	"BandwidthMHz": 20
 }
