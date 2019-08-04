@@ -16,7 +16,7 @@ type NRconfig struct {
 	SCENARIO                string        `json:"SCENARIO"`
 	CONFIG                  string        `json:"CONFIG"`
 	LAYOUTTYPE              int           `json:"LAYOUTTYPE"`
-	FcGHz                   int           `json:"FcGHz"`
+	FcGHz                   float64       `json:"FcGHz"`
 	NumTRxP                 int           `json:"NumTRxP"`
 	AntennaScheme           string        `json:"AntennaScheme"`
 	BSAntennaConfig         []int         `json:"BSAntennaConfig"`
@@ -26,7 +26,7 @@ type NRconfig struct {
 	ChannelModel            string        `json:"ChannelModel"`
 	ReliabiltyAntennaScheme string        `json:"ReliabiltyAntennaScheme"`
 	MobilityClass           int           `json:"MobilityClass"`
-	Fname                   string        `json:"fname"`
+	fname                   string
 }
 
 // Save ...
