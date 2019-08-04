@@ -1,0 +1,7 @@
+{
+    "Indir": "./config/json",
+    "Outdir":"./output_testCDF/RMA",
+    "Itufname":"ITU_RMa_configA.json",
+    "Nrfname":"3GPP_RMa_configA.json",
+    "Simfname":"SIM_RMa_configA.json"
+}
