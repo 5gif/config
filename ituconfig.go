@@ -24,21 +24,20 @@ type ITUconfig struct {
 	LAYOUTTYPE          int     `json:"LAYOUTTYPE"`
 	BSantennaType       string  `json:"BSantennaType"`
 	UEantennaType       string  `json:"UEantennaType"`
-	CarriersGHz         float64 `json:"FcGHz"`
+	CarriersGHz         float64 `json:"CarriersGHz "`
 	Duplexity           string  `json:"Duplexity"`
 	BSHeight            float64 `json:"BSHeight"`
 	UEHeightout         float64 `json:"UEHeightout"`
 	UEHeightin          float64 `json:"UEHeightin"`
-	TxPowerDbm          float64 `json:"BSTxPowerDbm"`
-	BandwidthMHz        int     `json:"BandwidthMHz"`
+	TxPowerDbm          float64 `json:"TxPowerDbm"`
 	UETxDbm             int     `json:"UETxDbm"`
 	BuildingTypeLoss    float64 `json:"BuildingTypeLoss"`
 	ISD                 float64 `json:"ISD"`
 	NumBSelements       int     `json:"NumBSelements"`
 	NumUEelements       int     `json:"NumUEelements"`
 	INDOORRatio         float64 `json:"INDOORRatio"`
-	IndoorSpeed         float64 `json:"IndoorSpeed"`
-	Outdoorspeed        float64 `json:"Outdoorspeed"`
+	IndoorSpeed         int     `json:"IndoorSpeed"`
+	Outdoorspeed        int     `json:"Outdoorspeed"`
 	BSNoiseFigureDb     float64 `json:"BSNoiseFigureDb"`
 	UENoiseFigureDb     float64 `json:"UENoiseFigureDb"`
 	BSAntennaEleGainDbi int     `json:"BSAntennaEleGainDbi"`
@@ -46,11 +45,12 @@ type ITUconfig struct {
 	N0                  int     `json:"N0"`
 	TrafficModel        int     `json:"TrafficModel"`
 	NumUEperCell        int     `json:"NumUEperCell"`
-	fname               string
-	INCARRatio          float64
-	INCARLossdB         float64
-	Out2IndoorLossDb    float64
-	NCells              int
+	INCARRatio          float64 `json:"INCARRatio"`
+	INCARLossdB         float64 `json:"INCARLossdB"`
+	Out2IndoorLossDb    float64 `json:"Out2IndoorLossDb"`
+	Fname               string  `json:"fname"`
+	NCells              int     `json:"NCells"`
+	BandwidthMHz        int     `json:"BandwidthMHz"`
 }
 
 //SetDefaults loads the default values for the simulation

@@ -12,24 +12,21 @@ import (
 
 // NRconfig structure
 type NRconfig struct {
-	ENV                     string  `json:"ENV"`
-	SCENARIO                string  `json:"SCENARIO"`
-	CONFIG                  string  `json:"CONFIG"`
-	LAYOUTTYPE              int     `json:"LAYOUTTYPE"`
-	ISD                     int     `json:"ISD"`
-	FcGHz                   float64 `json:"FcGHz"`
-	BandwidthMHz            float64 `json:"BandwidthMHz"`
-	SCSKHz                  int     `json:"SCSKHz"`
-	Duplexity               string  `json:"Duplexity"`
-	AntennaScheme           string  `json:"AntennaScheme"`
-	ReliabiltyAntennaScheme string  `json:"ReliabiltyAntennaScheme"`
-	BSAntennaConfig         []int   `json:"BSAntennaConfig"`
-	UEAntennaConfig         string  `json:"UEAntennaConfig"`
-	FrameStructure          string  `json:"FrameStructure"`
-	ChannelModel            string  `json:"ChannelModel"`
-	NumTRxP                 string  `json:"NumTRxP"`
-	MobilityClass           int     `json:"MobilityClass"`
-	fname                   string
+	ENV                     string        `json:"ENV"`
+	SCENARIO                string        `json:"SCENARIO"`
+	CONFIG                  string        `json:"CONFIG"`
+	LAYOUTTYPE              int           `json:"LAYOUTTYPE"`
+	FcGHz                   int           `json:"FcGHz"`
+	NumTRxP                 int           `json:"NumTRxP"`
+	AntennaScheme           string        `json:"AntennaScheme"`
+	BSAntennaConfig         []int         `json:"BSAntennaConfig"`
+	UEAntennaConfig         []interface{} `json:"UEAntennaConfig"`
+	SCSKHz                  int           `json:"SCSKHz"`
+	FrameStructure          string        `json:"FrameStructure"`
+	ChannelModel            string        `json:"ChannelModel"`
+	ReliabiltyAntennaScheme string        `json:"ReliabiltyAntennaScheme"`
+	MobilityClass           int           `json:"MobilityClass"`
+	Fname                   string        `json:"fname"`
 }
 
 // Save ...
