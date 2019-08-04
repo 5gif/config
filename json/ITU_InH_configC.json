@@ -2,7 +2,7 @@
 	"ENV": "InH",
 	"SCENARIO": "eMBB",
 	"CONFIG": "C",
-	"LAYOUTTYPE": 0,
+	"LAYOUTTYPE": 1,
 	"BSantennaType": "Undefined",
 	"UEantennaType": "Undefined",
 	"CarriersGHz ": 70,
