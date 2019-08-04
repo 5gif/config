@@ -48,9 +48,9 @@ type ITUconfig struct {
 	INCARRatio          float64 `json:"INCARRatio"`
 	INCARLossdB         float64 `json:"INCARLossdB"`
 	Out2IndoorLossDb    float64 `json:"Out2IndoorLossDb"`
-	Fname               string  `json:"fname"`
+	fname               string
 	NCells              int     `json:"NCells"`
-	BandwidthMHz        int     `json:"BandwidthMHz"`
+	BandwidthMHz        float64 `json:"BandwidthMHz"`
 }
 
 //SetDefaults loads the default values for the simulation
