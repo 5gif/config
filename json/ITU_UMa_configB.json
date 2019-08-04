@@ -31,5 +31,5 @@
 	"Out2IndoorLossDb":10.0, 
 	"fname":"ITU_UMa _configB",
 	"NCells":19,
-	"BandwidthMHz": 80
+	"BandwidthMHz": 80.0
 }

@@ -3,7 +3,7 @@
 	"SCENARIO": "eMBB",
 	"CONFIG": "B",
 	"LAYOUTTYPE": 1,
-	"FcGHz":30,
+	"FcGHz":30.0,
 	"NumTRxP": 12,
 	"AntennaScheme": "32x8 MU-MIMO, Reciprocity based, 4T SRS (2 panel@UE)",
     "BSAntennaConfig": [4,4,2,1,1,4,4],

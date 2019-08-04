@@ -3,7 +3,7 @@
 	"SCENARIO": "eMBB",
 	"CONFIG": "B",
     "LAYOUTTYPE": 0,
-	"FcGHz":4,
+	"FcGHz":4.0,
 	"NumTRxP": 57,
 	"AntennaScheme": "",
 	"BSAntennaConfig": [],
