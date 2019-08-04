@@ -4,7 +4,7 @@
 	"CONFIG": "A",
     "LAYOUTTYPE": 0,
 	"FcGHz":4,
-	"NumTRxP": -1,
+	"NumTRxP": 57,
 	"AntennaScheme": "32x4 MU-MIMO, Reciprocity based, 4T SRS",
 	"BSAntennaConfig": [8,8,2,1,1,2,8],
 	"UEAntennaConfig": [],

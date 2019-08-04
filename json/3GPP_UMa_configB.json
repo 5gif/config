@@ -4,7 +4,7 @@
 	"CONFIG": "B",
     "LAYOUTTYPE": 0,
 	"FcGHz":4,
-	"NumTRxP": -1,
+	"NumTRxP": 57,
 	"AntennaScheme": "",
 	"BSAntennaConfig": [],
 	"UEAntennaConfig": [],
