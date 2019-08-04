@@ -50,6 +50,7 @@ All the JSON files can be validated [here](https://jsonlint.com/)
 
 ## How to use
 
+### Using LoadStructure function()
 ``` go
 import "github.com/5gif/config"
 ```
@@ -67,7 +68,7 @@ fmt.Println(ituconfig.FcGHz)
 
 ```
 
-### Simplest way
+### Using Read() method
 ``` go
 config.SetDir("../json", "results")
 
@@ -79,6 +80,23 @@ icfg.Save()
 icfg2 := config.ReadITUConfig("ITU_RMa_configA.json", "../json")
 fmt.Printf("\n\nITU-R Method 2 Config = %#v\n", icfg2)
 icfg2.Save()
+```
+
+### Using Setup() function
+__Note__ : This method requires a json file containing the path to the input & output folder. Refer "default.json" for more.
+```go
+var i config.ITUconfig
+var n config.NRconfig
+var s config.SIMconfig
+var err error
+var input = "default.json"
+
+i, n, s, _, err = config.Setup(input)
+if err == nil {
+  config.PrintStructsPretty(i)
+  config.PrintStructsPretty(n)
+  config.PrintStructsPretty(s)
+}
 ```
 
 ## Built With
