@@ -164,8 +164,7 @@ func SetAppConfig(itucfg ITUconfig, nrcfg NRconfig, simcfg SIMconfig) (AppConfig
 	C1.NCells = itucfg.NCells
 	C1.BSHeight = itucfg.BSHeight
 	C1.UEHeight = itucfg.UEHeightout
-
-	C1.BandwidthMHz = nrcfg.BandwidthMHz
+	C1.BandwidthMHz = itucfg.BandwidthMHz
 
 	C1.ActiveBSCells = simcfg.ActiveBSCells
 	C1.ActiveUECells = simcfg.ActiveUECells
