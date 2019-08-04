@@ -1,18 +1,40 @@
-# config
-All the configuration files for ITU, 3GPP and simulator will be here
+# Config
 
-Must be able to validate all the JSON files [here](https://jsonlint.com/) 
+This package consists of configurations files in json format and it's handlers. These files are required for the 5G NR Simulators. The handlers consists of function and method to read various configurations to golang structs.
+All the configuration files for ITU, 3GPP and simulator are present here.
+
+All the JSON files can be validated [here](https://jsonlint.com/) 
 
 
-## 3GPP
+## Getting Started
+
+- Clone the repository to the right directory.
+```
+>>$ cd $GOPATH
+>>$GOPATH mkdir 'Github-Username'
+>>$GOPATH cd 'Github-Username'
+>>$GOPATH/'Github-Username' git clone "Clone Link"
+```
+
+### Pre-Requisites
+
+- Install all go dependencies using the following command.
+```
+>>$GOPATH/'Github-Username' go get .
+```
+
+## Understand the JSON parameters
+
+- The description of certain JSON parameters are given below.
+
+### 3GPP
 ```
 {
   "LAYOUTTYPE": 0, (0 OR 1) ->Gives the Type of Network Layout. In other words, it suggests if the layout is Indoor hotspot type or not.
 }
 ```
 
-
-## ITU
+### ITU
 ```
 {
   "TrafficModel": 0, (0 means full buffer and 1 means lookup)
@@ -26,7 +48,7 @@ Must be able to validate all the JSON files [here](https://jsonlint.com/)
 }
 ```
 
-## How to use 
+### How to use
 
 ``` go
 import "github.com/5gif/config"
@@ -45,7 +67,6 @@ fmt.Println(ituconfig.FcGHz)
 
 ```
 
-
 ## Simplest way
 ``` go
 config.SetDir("../json", "results")
@@ -60,5 +81,20 @@ fmt.Printf("\n\nITU-R Method 2 Config = %#v\n", icfg2)
 icfg2.Save()
 ```
 
-### Credits
-Used https://mholt.github.io/json-to-go/ . to create `golang` struct
+## Built With
+
+* [Golang](https://golang.org/) - JSON objects are handled using goalng structs and their corresponing handler methods.
+* [JSON-to-Go](https://mholt.github.io/json-to-go/) struct convertor - It's an easy way to convert JSON to Go struct.
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+## Acknowledgments
+
+* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2) for this README template.
+* [mholt](https://github.com/mholt) for a JSON-to-Go struct convertor 
