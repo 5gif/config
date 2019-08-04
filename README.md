@@ -7,8 +7,7 @@ Must be able to validate all the JSON files [here](https://jsonlint.com/)
 ## 3GPP
 ```
 {
-  "LAYOUTTYPE": 0, (0 OR 1) ->nETWORK lAYOUT
-  "ISD": 0, (1 means 6km o/w not mentioned)
+  "LAYOUTTYPE": 0, (0 OR 1) ->Gives the Type of Network Layout. In other words, it suggests if the layout is Indoor hotspot type or not.
 }
 ```
 
@@ -17,12 +16,13 @@ Must be able to validate all the JSON files [here](https://jsonlint.com/)
 ```
 {
   "TrafficModel": 0, (0 means full buffer and 1 means lookup)
-  "NumUEperCell": 10, (UE/TRxP)
-  "INDOORRatio": 0.8, (device deployment)
+  "NumUEperCell": 30, (30 means that there are 10 UEs within a cell. In other words 10 UEs per TRxP)
+  "INDOORRatio": 0.8, (0.8 implies 80% devices are deployed indoor and 20% are deployed outdoor)
   "BuildingTypeLoss": 0.8 (check variable name)
-  "BandwidthMHz": 20, (same parameters as 3GPP)
+  "BandwidthMHz": 20, (It is the simulation Bandwidth of the system)
   "UEHeightout": 1.5, (check variable)
   "UEHeightin": 7.5,  (seed value)
+  "INCARRatio":0, (Devices deployed outdoors are either in car or pedestrians. 0 means there is no user deployed within a car)
 }
 ```
 
