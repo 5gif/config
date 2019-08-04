@@ -48,7 +48,7 @@ All the JSON files can be validated [here](https://jsonlint.com/)
 }
 ```
 
-### How to use
+## How to use
 
 ``` go
 import "github.com/5gif/config"
@@ -67,7 +67,7 @@ fmt.Println(ituconfig.FcGHz)
 
 ```
 
-## Simplest way
+### Simplest way
 ``` go
 config.SetDir("../json", "results")
 
