@@ -10,7 +10,7 @@
 	"BSHeight": 3.0,
 	"UEHeightout": 1.5,
 	"UEHeightin": -1.0,
-	"TxPowerDbm": 24.0,
+	"TxPowerDbm": 21.0,
 	"UETxDbm": 23,
 	"BuildingTypeLoss": 1.0,
 	"ISD": 20.0,
@@ -31,5 +31,5 @@
 	"Out2IndoorLossDb":10.0, 
 	"fname":"ITU_InH _configA",
 	"NCells":19,
-	"BandwidthMHz": 20.0
+	"BandwidthMHz": 10.0
 }

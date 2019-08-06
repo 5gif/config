@@ -10,7 +10,7 @@
 	"BSHeight": 3,
 	"UEHeightout": 1.5,
 	"UEHeightin": -1,
-	"TxPowerDbm": 24,
+	"TxPowerDbm": 21,
 	"BandwidthMHz": 10,
 	"UETxDbm": 23,
 	"BuildingTypeLoss": 1,
