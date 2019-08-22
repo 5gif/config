@@ -6,7 +6,7 @@
   "ISD": 1732.0,
 	"BSantennaType": "Undefined",
 	"UEantennaType": "Undefined",
-	"CarriersGHz":.700,
+	"CarriersGHz":0.700,
 	"Duplexity": "FDD",
 	"BSHeight": 25.0,
 	"UEHeightout": 1.5,
