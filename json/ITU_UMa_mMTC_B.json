@@ -11,7 +11,7 @@
 	"BSHeight": 25.0,
 	"UEHeightout": 1.5,
 	"UEHeightin": 1.5,
-	"TxPowerDbm": 41.0,
+	"TxPowerDbm": 46.0,
 	"UETxDbm": 23,
   "BuildingTypeLoss": 0.8,
 	"NumBSelements": 64,
