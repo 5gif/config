@@ -1,0 +1,21 @@
+{
+	"SCENARIO" : "SIM_RMa_test_configA",
+	"SimulationTime" : 1,
+	"FrameType" : 0,
+	"SlotType" : 0,
+	"NumUEperSlot" : 4,
+	"fname":"SIM_RMa_test_configA",
+	"ActiveBSCells":1,
+	"ActiveUECells":1,
+	"Extended": true,
+	"ForceAllLOS": false   ,
+	"ShadowLoss":true,
+	"LogInfo" :false,
+	"UEcells": [0 , 4,18],
+	"BScells": [0,18],
+	"TrueCells":0,
+	"SchedulerType":1,
+	"IsDownLink":true,
+    "AntennaVTilt": 15,
+    "IsSinglecell":true
+}
