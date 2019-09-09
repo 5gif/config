@@ -15,7 +15,7 @@
   	"BuildingTypeLoss": 1,
 	"ISD": 500.0,
 	"NumBSelements": 64,
-	"NumUEelements": 4,
+	"NumUEelements": 2,
 	"INDOORRatio": 0.2,
 	"IndoorSpeed":3.0,
 	"Outdoorspeed": 30.0,
