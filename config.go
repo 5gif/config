@@ -89,6 +89,7 @@ func Setup(fname string) (ITUconfig, NRconfig, SIMconfig, antenna.SettingAAS, er
 	log.Println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 	var err1, err2, err3, err error
 	var ITUcfg ITUconfig
+
 	ITUcfg, err1 = ReadITUConfig(c.Itufname)
 
 	var NRcfg NRconfig
