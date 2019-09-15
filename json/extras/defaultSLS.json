@@ -1,10 +1,10 @@
 {
 	"ENV": "RMa",
 	"SCENARIO": "eMBB",
-	"CONFIG": "A",
+	"CONFIG": "1Cell",
 	"LAYOUTTYPE": 0,
-	"BSantennaType": "Undefined",
-	"UEantennaType": "Undefined",
+	"BSantennaType": "0",
+	"UEantennaType": "1",
 	"CarriersGHz ":0.7,
 	"Duplexity": "TDD",
 	"BSHeight": 35.0,
