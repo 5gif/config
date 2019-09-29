@@ -1,9 +1,8 @@
 package config
 
 import (
-	"os"
-	"strconv"
-	"time"
+	"fmt"
+	"math"
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/spf13/viper"
@@ -30,6 +29,8 @@ type SIMconfig struct {
 	SchedulerType  int     `json:"SchedulerType"`
 	IsDownLink     bool    `json:"IsDownLink"`
 	AntennaVTilt   float64 `json:"AntennaVTilt"`
+	CellRadius     float64 `json:"-"`
+	NCells         int     `json:"-"`
 }
 
 //SetDefaults loads the default values for the simulation
@@ -39,9 +40,9 @@ func (i *SIMconfig) SetDefaults() {
 	i.ActiveUECells = -1 // UEs are dropped in all the cells
 	i.Extended = false
 	i.ForceAllLOS = false
-	i.ShadowLoss = true
+	i.ShadowLoss = false
 	i.LogInfo = false
-	i.UEcells = []int{0, 10}
+	i.UEcells = []int{0, 1, 2}
 	i.BScells = []int{0, 1, 2}
 	i.TrueCells = -1 // Default to all the cells
 	i.IsDownLink = true
@@ -49,27 +50,16 @@ func (i *SIMconfig) SetDefaults() {
 }
 
 // Save ...
-func (i *SIMconfig) Save() {
-	CurrDIR, _ := os.Getwd()
-	t := time.Now()
-	year, month, day := t.Date()
-	root, _ := os.Getwd()
-	OutDIR := root + "/" + OutDIR + "/" + strconv.Itoa(day) + "_" + strconv.Itoa(int(month)) + "_" + strconv.Itoa(year)
-	// fmt.Println(OutDIR)
-	_, err := os.Stat(OutDIR)
-	if err != nil {
-		os.MkdirAll(OutDIR, 0700)
-	}
-	os.Chdir(OutDIR)
-	log.Println("Saving SIM config to OUTPUT DIR: ", OutDIR)
-	vlib.SaveStructure(i, i.Fname, true)
-	//SwitchBack()
-	os.Chdir(CurrDIR)
+func (s *SIMconfig) Save() {
+	SwitchOutput()
+	vlib.SaveStructure(s, s.Fname+".json", true)
+	SwitchBack()
+
 }
 
-func (i *SIMconfig) Read(f string) error {
-	i.SetDefaults()
-	i.Fname = f
+func (s *SIMconfig) Read(f string) error {
+	s.SetDefaults()
+	s.Fname = f
 	viper.AddConfigPath(InDIR)
 	// viper.SetConfigName(f)
 	viper.SetConfigFile(InDIR + "/" + f)
@@ -79,7 +69,7 @@ func (i *SIMconfig) Read(f string) error {
 		log.Print("ReadInConfig Error: ", err)
 		return err
 	}
-	err = viper.Unmarshal(i)
+	err = viper.Unmarshal(s)
 	if err != nil {
 		log.Print("Error unmarshalling ", err)
 		return err
@@ -93,4 +83,75 @@ func ReadSIMConfig(configname string) (SIMconfig, error) {
 	// fmt.Println(InDIR)
 	err := cfg.Read(configname)
 	return cfg, err
+}
+
+// SetSIMconfig reads all the configuration for the app
+func (s *SIMconfig) SetSIMconfig(itucfg ITUconfig, nrcfg NRconfig) {
+
+	s.SetDefaults()
+	log.Print("Configuring Simulator")
+	s.NCells = itucfg.NCells
+	//	s.Extended = simcfg.Extended  set based on RMa ??
+
+	if s.ActiveBSCells == -1 {
+		if len(s.BScells) > 0 {
+			s.ActiveBSCells = len(s.BScells)
+		} else {
+			s.ActiveBSCells = itucfg.NCells
+			s.BScells = vlib.NewSegmentI(0, s.ActiveBSCells)
+		}
+	} else {
+		s.BScells = vlib.NewSegmentI(0, s.ActiveBSCells)
+	}
+
+	if s.ActiveUECells == -1 {
+		if len(s.UEcells) > 0 {
+			s.ActiveUECells = len(s.UEcells)
+		} else {
+			s.ActiveUECells = itucfg.NCells
+			s.UEcells = vlib.NewSegmentI(0, s.ActiveUECells)
+		}
+	} else {
+		s.UEcells = vlib.NewSegmentI(0, s.ActiveUECells)
+		fmt.Println(s.UEcells)
+	}
+
+	// Load from the external configuration files
+	// ISD := viper.GetFloat64("ISD")
+	// TxPowerDbm := viper.GetFloat64("TxpowerDBm")
+	s.CellRadius = itucfg.ISD / math.Sqrt(3.0)
+
+	s.SaveSIMconfig()
+	// return C1, CellRadius, CarriersGHz
+}
+
+// ReadSIMconfig reads all the configuration for the app //( float64, float64, float64, []float64)
+func (s *SIMconfig) ReadSIMconfig(configname string, indir string) {
+	s.SetDefaults()
+	log.Print("Reading APP config ")
+	viper.AddConfigPath(indir)
+	viper.SetConfigName(configname)
+
+	err := viper.ReadInConfig()
+	if err != nil {
+		log.Print("ReadInConfig ", err)
+	}
+
+	fmt.Printf("\n INPUT CONFIGURATION %#v", s)
+	err = viper.Unmarshal(&s)
+	if err != nil {
+		log.Print("Error unmarshalling ", err)
+	}
+
+	s.SaveSIMconfig()
+
+}
+
+//SaveSIMconfig ....
+func (s *SIMconfig) SaveSIMconfig() {
+
+	SwitchOutput()
+	vlib.SaveStructure(s, "OutputSetting.json", true)
+	SwitchBack()
+
 }

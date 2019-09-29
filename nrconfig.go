@@ -1,10 +1,6 @@
 package config
 
 import (
-	"os"
-	"strconv"
-	"time"
-
 	log "github.com/Sirupsen/logrus"
 	"github.com/spf13/viper"
 	"github.com/wiless/vlib"
@@ -31,22 +27,11 @@ type NRconfig struct {
 
 // Save ...
 func (i *NRconfig) Save() {
-	CurrDIR, _ := os.Getwd()
-	t := time.Now()
-	year, month, day := t.Date()
-	root, _ := os.Getwd()
-	OutDIR := root + "/" + OutDIR + "/" + strconv.Itoa(day) + "_" + strconv.Itoa(int(month)) + "_" + strconv.Itoa(year)
-	// fmt.Println(OutDIR)
-	_, err := os.Stat(OutDIR)
-	if err != nil {
-		os.MkdirAll(OutDIR, 0700)
-	} //else {
-	// 	fmt.Println(x)
-	// }
-	os.Chdir(OutDIR)
-	log.Println("Saving NR config OUTPUT DIR: ", OutDIR)
+
+	SwitchOutput()
 	vlib.SaveStructure(i, i.fname, true)
-	os.Chdir(CurrDIR)
+	SwitchBack()
+	// os.Chdir(CurrDIR)
 }
 
 func (i *NRconfig) Read(f string) error {

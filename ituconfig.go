@@ -2,8 +2,6 @@ package config
 
 import (
 	"os"
-	"strconv"
-	"time"
 
 	log "github.com/Sirupsen/logrus"
 	"github.com/spf13/viper"
@@ -12,8 +10,10 @@ import (
 
 // SetDir sets the directory
 func SetDir(in, out string) {
-	InDIR = in
-	OutDIR = out
+	CurrDIR, _ = os.Getwd()
+	InDIR = CurrDIR + "/" + in
+	OutDIR = CurrDIR + "/" + out
+	os.MkdirAll(OutDIR, os.ModePerm)
 }
 
 // ITUconfig ....
@@ -71,21 +71,7 @@ func (i *ITUconfig) SetDefaults() {
 
 // Save config
 func (i *ITUconfig) Save() {
-	CurrDIR, _ := os.Getwd()
-	t := time.Now()
-	year, month, day := t.Date()
-	root, _ := os.Getwd()
-	opdir := root + "/" + OutDIR + "/" + strconv.Itoa(day) + "_" + strconv.Itoa(int(month)) + "_" + strconv.Itoa(year)
-	// fmt.Println(opdir)
-	_, err := os.Stat(opdir)
-	if err != nil {
-		os.MkdirAll(opdir, 0700)
-	} //else {
-	// 	fmt.Println(x)
-	// }
 
-	os.Chdir(opdir)
-	log.Println("Saving ITU config to OUTPUT DIR: ", opdir)
 	vlib.SaveStructure(i, i.fname, true)
 	os.Chdir(CurrDIR)
 }

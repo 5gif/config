@@ -1,12 +1,11 @@
 package config
 
 import (
-	"encoding/json"
 	"errors"
-	"fmt"
-	"log"
+
+	log "github.com/Sirupsen/logrus"
+
 	"os"
-	"reflect"
 
 	"github.com/spf13/viper"
 	"github.com/wiless/cellular/antenna"
@@ -22,24 +21,23 @@ var OutDIR string
 // CurrDIR This is a comment
 var CurrDIR string
 
-type cfgSettings struct {
-	Indir    string `json:"indir"`
-	Outdir   string `json:"outdir"`
-	Itufname string `json:"itufname"`
-	Nrfname  string `json:"nrfname"`
-	Simfname string `json:"simfname"`
+// AppSetting setting to read and write config files
+type AppSetting struct {
+	INdir    string `json:"inputdir"`
+	OUTdir   string `json:"outputdir"`
+	ITUfname string `json:"ITUconfig"`
+	NRfname  string `json:"NRconfig"`
+	SIMfname string `json:"SIMconfig"`
 }
 
 func init() {
 	InDIR = "."
-	OutDIR = "./results"
-	CurrDIR = "."
+	OutDIR = "."
+	CurrDIR, _ = os.Getwd()
 }
 
-var c cfgSettings
-
 // ReadCfgSettings reads all the configuration for the app
-func (c *cfgSettings) ReadCfgSettings(fname string) {
+func (app *AppSetting) FromJSON(fname string) {
 	pwd, _ := os.Getwd()
 	viper.SetConfigFile(pwd + "/" + fname)
 	viper.SetConfigType("json")
@@ -47,68 +45,90 @@ func (c *cfgSettings) ReadCfgSettings(fname string) {
 	if err != nil {
 		log.Print("ReadInConfig: ", err)
 	}
-	err = viper.Unmarshal(c)
+	err = viper.Unmarshal(app)
 	if err != nil {
 		log.Print("Error unmarshalling in viper: ", err)
 	} else {
-		PrintStructsPretty(c)
+		PrintStructsPretty(app)
+	}
+	OutDIR = app.OUTdir
+	InDIR = app.INdir
+
+}
+
+// ReadCfgSettings reads all the configuration for the app
+func (app *AppSetting) read(fname string) {
+	pwd, _ := os.Getwd()
+	viper.SetConfigFile(pwd + "/" + fname)
+	// viper.SetConfigType("json")
+	err := viper.ReadInConfig()
+	if err != nil {
+		log.Print("ReadInConfig: ", err)
+	}
+	err = viper.Unmarshal(app)
+	if err != nil {
+		log.Print("Error unmarshalling in viper: ", err)
+	} else {
+		PrintStructsPretty(app)
 	}
 }
 
-// SwitchInput ...
-func SwitchInput(indir string) {
-	GOPATH := os.Getenv("GOPATH")
-	CurrDIR, _ = os.Getwd()
-	InDIR = GOPATH + "/src/github.com/5gif/" + indir
-	log.Println("Input Directory: ", InDIR)
-	os.Chdir(InDIR)
-}
+// LoadApp loads all the config in the App
+func (app *AppSetting) LoadApp() (*AppConfigs, error) {
+	//app.read(fname)
+	DefaultApp.AppSetting = *app
+	OutDIR = app.OUTdir
+	InDIR = app.INdir
 
-// SwitchBack ...
-func SwitchBack() {
-	os.Chdir(CurrDIR)
-}
+	log.Info("Loading App Configurations", OutDIR)
+	SetDir(app.INdir, app.OUTdir)
+	app.INdir = InDIR
+	app.OUTdir = OutDIR
+	SwitchInput()
 
-// PrintStructsPretty ...
-func PrintStructsPretty(c interface{}) {
-	fmt.Println(reflect.TypeOf(c), c)
-	b, err := json.MarshalIndent(c, "", "    ")
-	if err == nil {
-		fmt.Println(reflect.TypeOf(c), " struct:")
-		fmt.Println(string(b))
-	}
-}
-
-// Setup ...
-// func Setup(fname string) ITUconfig {
-func Setup(fname string) (ITUconfig, NRconfig, SIMconfig, antenna.SettingAAS, error) {
-	c.ReadCfgSettings(fname)
-	SetDir(c.Indir, c.Outdir)
-	SwitchInput(InDIR)
-
-	log.Println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
 	var err1, err2, err3, err error
 	var ITUcfg ITUconfig
-
-	ITUcfg, err1 = ReadITUConfig(c.Itufname)
-
 	var NRcfg NRconfig
-	NRcfg, err2 = ReadNRConfig(c.Nrfname)
-
 	var SIMcfg SIMconfig
-	SIMcfg, err3 = ReadSIMConfig(c.Simfname)
+
+	log.Info("Loading ITU Config")
+	ITUcfg, err1 = ReadITUConfig(app.ITUfname)
+	log.Info("Loading ITU Config ..done")
+
+	log.Info("Loading NR Config")
+	NRcfg, err2 = ReadNRConfig(app.NRfname)
+	log.Info("Loading NR Config ..done")
+
+	log.Info("Loading SIM Config")
+	SIMcfg, err3 = ReadSIMConfig(app.SIMfname)
+	SIMcfg.SetSIMconfig(ITUcfg, NRcfg)
+	log.Info("Loading SIM Config ..done")
 
 	var AAS antenna.SettingAAS
-	// SIMcfg, err3 = ReadSIMConfig(c.Simfname)
-	vlib.LoadStructure("sector.json", &AAS)
-
+	if _, err := os.Stat("sector.json"); os.IsNotExist(err) {
+		// path/to/whatever does not exist
+		log.Fatal("Unable to find sector.json")
+	} else {
+		vlib.LoadStructure("sector.json", &AAS)
+	}
+	/// ----- DONE loading all the ITU, 3GPP ,  SimConfig and related Antenna config
 	SwitchBack()
 
 	if err1 != nil || err2 != nil || err3 != nil {
+		log.Println(err1, err2, err3)
 		err = errors.New("Setup Error: Files not read correctly. Using default values")
 	} else {
 		err = nil
 	}
-	return ITUcfg, NRcfg, SIMcfg, AAS, err
+
+	// (ITUconfig, NRconfig, SIMconfig, antenna.SettingAAS, error)
+	// GenerateSIMconfig - Generates configuration for the app using ITU, NR and SIM config files
+	// func SetAppConfigs(itucfg ITUconfig, nrcfg NRconfig, simcfg SIMconfig) {
+	DefaultApp.ITUcfg = ITUcfg
+	DefaultApp.NRcfg = NRcfg
+	DefaultApp.SIMcfg = SIMcfg
+	DefaultApp.AAScfg = AAS
+
+	return &DefaultApp, err
 	// return ITUcfg
 }

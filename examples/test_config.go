@@ -46,16 +46,16 @@ func main() {
 
 	fmt.Println("\n\n=========== Use method 6 ===========")
 	// The flow of main() to read calls a setup function using an input json file
-	var i config.ITUconfig
-	var n config.NRconfig
-	var s config.SIMconfig
 	var err error
 	var input = "default.json"
+	var appsetting config.AppSetting
+	appsetting.FromJSON(input)
+	app, err := appsetting.LoadApp()
 
-	i, n, s, _, err = config.Setup(input)
+	// i, n, s, _, err = config.DefaultApp.Load(input)
 	if err == nil {
-		config.PrintStructsPretty(i)
-		config.PrintStructsPretty(n)
-		config.PrintStructsPretty(s)
+		config.PrintStructsPretty(app.ITUcfg)
+		config.PrintStructsPretty(app.NRcfg)
+		config.PrintStructsPretty(app.SIMcfg)
 	}
 }

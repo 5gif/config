@@ -2,16 +2,23 @@
 	"ENV": "RMa",
 	"SCENARIO": "eMBB",
 	"CONFIG": "A",
-    "LAYOUTTYPE": 0,
-	"FcGHz":0.7,
+	"LAYOUTTYPE": 0,
+	"FcGHz": 0.7,
 	"NumTRxP": 57,
 	"AntennaScheme": "8x2 MU-MIMO, Reciprocity based, 2T SRS",
-	"BSAntennaConfig": [8,4,2,1,1,1,4],
+	"BSAntennaConfig": [
+		8,
+		4,
+		2,
+		1,
+		1,
+		1,
+		4
+	],
 	"UEAntennaConfig": [],
 	"SCSKHz": 30,
 	"FrameStructure": "DDDSU",
 	"ChannelModel": "A",
 	"ReliabiltyAntennaScheme": "",
-	"MobilityClass": 120,
-	"fname":"3GPP_RMa_configA"
+	"MobilityClass": 120
 }
