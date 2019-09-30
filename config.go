@@ -56,6 +56,14 @@ func (app *AppSetting) FromJSON(fname string) {
 
 }
 
+// Setup single big quick function
+func Setup(inputcfg string) (ITUconfig, NRconfig, SIMconfig, antenna.SettingAAS, error) {
+	var app AppSetting
+	app.FromJSON(inputcfg)
+	Appcfg, err := app.LoadApp()
+	return Appcfg.ITUcfg, Appcfg.NRcfg, Appcfg.SIMcfg, Appcfg.AAScfg, err
+}
+
 // ReadCfgSettings reads all the configuration for the app
 func (app *AppSetting) read(fname string) {
 	pwd, _ := os.Getwd()

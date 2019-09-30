@@ -42,8 +42,8 @@ func (i *SIMconfig) SetDefaults() {
 	i.ForceAllLOS = false
 	i.ShadowLoss = false
 	i.LogInfo = false
-	i.UEcells = []int{0, 1, 2}
-	i.BScells = []int{0, 1, 2}
+	// i.UEcells = []int{0, 1, 2}
+	// i.BScells = []int{0, 1, 2}
 	i.TrueCells = -1 // Default to all the cells
 	i.IsDownLink = true
 
@@ -88,7 +88,7 @@ func ReadSIMConfig(configname string) (SIMconfig, error) {
 // SetSIMconfig reads all the configuration for the app
 func (s *SIMconfig) SetSIMconfig(itucfg ITUconfig, nrcfg NRconfig) {
 
-	s.SetDefaults()
+	//s.SetDefaults()
 	log.Print("Configuring Simulator")
 	s.NCells = itucfg.NCells
 	//	s.Extended = simcfg.Extended  set based on RMa ??
@@ -120,7 +120,7 @@ func (s *SIMconfig) SetSIMconfig(itucfg ITUconfig, nrcfg NRconfig) {
 	// ISD := viper.GetFloat64("ISD")
 	// TxPowerDbm := viper.GetFloat64("TxpowerDBm")
 	s.CellRadius = itucfg.ISD / math.Sqrt(3.0)
-
+	log.Infof("After SET sim cfg %#v", s)
 	s.SaveSIMconfig()
 	// return C1, CellRadius, CarriersGHz
 }
