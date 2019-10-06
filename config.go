@@ -25,9 +25,9 @@ var CurrDIR string
 type AppSetting struct {
 	INdir    string `json:"inputdir"`
 	OUTdir   string `json:"outputdir"`
-	ITUfname string `json:"ITUconfig"`
-	NRfname  string `json:"NRconfig"`
-	SIMfname string `json:"SIMconfig"`
+	ITUfname string `json:"itu"` //  "ITUconfig"`
+	NRfname  string `json:"nr"`  //NRconfig
+	SIMfname string `json:"sim"` //SIMconfig
 }
 
 func init() {

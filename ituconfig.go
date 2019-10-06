@@ -72,8 +72,12 @@ func (i *ITUconfig) SetDefaults() {
 // Save config
 func (i *ITUconfig) Save() {
 
+	SwitchOutput()
+	// vlib.SaveStructure(s, "OutputSetting.json", true)
 	vlib.SaveStructure(i, i.fname, true)
-	os.Chdir(CurrDIR)
+	SwitchBack()
+
+	// os.Chdir(CurrDIR)
 }
 
 func (i *ITUconfig) Read(f string) error {

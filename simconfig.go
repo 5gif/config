@@ -31,6 +31,7 @@ type SIMconfig struct {
 	AntennaVTilt   float64 `json:"AntennaVTilt"`
 	CellRadius     float64 `json:"-"`
 	NCells         int     `json:"-"`
+	ISD            float64 `json:",omitempty"`
 }
 
 //SetDefaults loads the default values for the simulation
@@ -120,7 +121,8 @@ func (s *SIMconfig) SetSIMconfig(itucfg ITUconfig, nrcfg NRconfig) {
 	// ISD := viper.GetFloat64("ISD")
 	// TxPowerDbm := viper.GetFloat64("TxpowerDBm")
 	s.CellRadius = itucfg.ISD / math.Sqrt(3.0)
-	log.Infof("After SET sim cfg %#v", s)
+	s.ISD = itucfg.ISD
+	log.Infof("SIMconfig Initialized : %#v", s)
 	s.SaveSIMconfig()
 	// return C1, CellRadius, CarriersGHz
 }
@@ -149,9 +151,7 @@ func (s *SIMconfig) ReadSIMconfig(configname string, indir string) {
 
 //SaveSIMconfig ....
 func (s *SIMconfig) SaveSIMconfig() {
-
 	SwitchOutput()
-	vlib.SaveStructure(s, "OutputSetting.json", true)
+	vlib.SaveStructure(s, s.Fname, true)
 	SwitchBack()
-
 }
