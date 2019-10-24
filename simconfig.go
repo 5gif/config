@@ -32,6 +32,7 @@ type SIMconfig struct {
 	CellRadius     float64 `json:"-"`
 	NCells         int     `json:"-"`
 	ISD            float64 `json:",omitempty"`
+	WrapAround     bool    `json:"WrapAround"`
 }
 
 //SetDefaults loads the default values for the simulation
@@ -47,6 +48,7 @@ func (i *SIMconfig) SetDefaults() {
 	// i.BScells = []int{0, 1, 2}
 	i.TrueCells = -1 // Default to all the cells
 	i.IsDownLink = true
+	i.WrapAround = false
 
 }
 
