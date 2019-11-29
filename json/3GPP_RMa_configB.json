@@ -12,6 +12,5 @@
 	"FrameStructure": "DDDSU",
 	"ChannelModel": "A",
 	"ReliabiltyAntennaScheme": "",
-	"MobilityClass": 120,
-	"fname":"3GPP_RMa_configB"
+	"MobilityClass": 120
 }

@@ -1,0 +1,17 @@
+{
+	"ENV": "UMa",
+	"SCENARIO": "mMTC",
+	"CONFIG": "B",
+    "LAYOUTTYPE": 0,
+	"FcGHz":0.700,
+	"NumTRxP": 3,
+	"AntennaScheme": "1x2 ",
+	"BSAntennaConfig": [8,1,2,1,1,1,1],
+	"UEAntennaConfig": [1,1,1,1,1,1,1],
+	"SCSKHz": 15,
+	"FrameStructure": "DDDSU",
+	"ChannelModel": "B",
+	"ReliabiltyAntennaScheme": "",
+	"MobilityClass": 0,
+	"fname":"3GPP_UMa_mMTCB.json"
+}

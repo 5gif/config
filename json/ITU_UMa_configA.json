@@ -5,7 +5,7 @@
 	"LAYOUTTYPE": 0,
 	"BSantennaType": "Undefined",
 	"UEantennaType": "Undefined",
-	"CarriersGHz ": 0.7,
+	"CarriersGHz ": 4,
 	"Duplexity": "TDD",
 	"BSHeight": 25,
 	"UEHeightout": 1.5,
