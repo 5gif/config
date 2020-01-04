@@ -7,6 +7,24 @@ import (
 )
 
 // NRconfig structure
+// type NRconfig struct {
+// 	ENV                     string        `json:"ENV"`
+// 	SCENARIO                string        `json:"SCENARIO"`
+// 	CONFIG                  string        `json:"CONFIG"`
+// 	LAYOUTTYPE              int           `json:"LAYOUTTYPE"`
+// 	FcGHz                   float64       `json:"FcGHz"`
+// 	NumTRxP                 int           `json:"NumTRxP"`
+// 	AntennaScheme           string        `json:"AntennaScheme"`
+// 	BSAntennaConfig         []int         `json:"BSAntennaConfig"`
+// 	UEAntennaConfig         []interface{} `json:"UEAntennaConfig"`
+// 	SCSKHz                  int           `json:"SCSKHz"`
+// 	FrameStructure          string        `json:"FrameStructure"`
+// 	ChannelModel            string        `json:"ChannelModel"`
+// 	ReliabiltyAntennaScheme string        `json:"ReliabiltyAntennaScheme"`
+// 	MobilityClass           int           `json:"MobilityClass"`
+// 	fname                   string
+// }
+
 type NRconfig struct {
 	ENV                     string        `json:"ENV"`
 	SCENARIO                string        `json:"SCENARIO"`
@@ -22,7 +40,17 @@ type NRconfig struct {
 	ChannelModel            string        `json:"ChannelModel"`
 	ReliabiltyAntennaScheme string        `json:"ReliabiltyAntennaScheme"`
 	MobilityClass           int           `json:"MobilityClass"`
+	GainDb                  float64       `json:"GainDb"`
+	VBeamWidth              float64       `json:"VBeamWidth"`
+	HBeamWidth              float64       `json:"HBeamWidth"`
+	SLAV                    float64       `json:"SLAV"`
+	ESpacingVFactor         float64       `json:"EspacingVfactor"`
+	ESpacingHFactor         float64       `json:"EspacingHfactor"`
+	ElectricalTilt          []float64     `json:"ElectricalTilt"`
+	Escan                   []float64     `json:"Escan"`
+	MechanicalTilt          float64       `json:"MechanicalTilt"`
 	fname                   string
+	Vtilt                   float64
 }
 
 // Save ...

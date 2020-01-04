@@ -1,10 +1,10 @@
 {
-    "SCENARIO": "SIM_RMa_configC",
+    "SCENARIO": "SIM_UMa_URLLC__configA",
     "SimulationTime": 1,
     "FrameType": 0,
     "SlotType": 0,
-    "NumUEperSlot": 4,
-    "fname": "SIM_RMa_configC",
+    "UEperSlot": 4,
+    "fname": "SIM_UMa_URLLC_configA.json",
     "ActiveBSCells": 128,
     "ActiveUECells": 19,
     "Extended": true,
@@ -13,17 +13,16 @@
     "LogInfo": false,
     "UEcells": [
         0,
-        1,
-        2
+        4,
+        18
     ],
     "BScells": [
         0,
-        1,
-        2
+        18
     ],
-    "TrueCells": -1,
+    "TrueCells": 0,
     "SchedulerType": 1,
     "IsDownLink": true,
-    "AntennaVTilt": 7.4,
+    "AntennaVTilt": 6.3,
     "WrapAround": true
 }

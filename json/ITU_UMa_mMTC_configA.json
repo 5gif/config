@@ -12,7 +12,6 @@
 	"UEHeightin": 1.5,
 	"TxPowerDbm": 46.0,
 	"UETxDbm": 23,
-  	"BuildingTypeLoss": 0.8,
 	"ISD": 500.0,
 	"NumBSelements": 64,
 	"NumUEelements": 2,
@@ -26,12 +25,10 @@
 	"N0": -174,
 	"TrafficModel": 1,
 	"NumUEperCell": 30,
-	"INCARRatio":0,
-	"INCARLossdB":0.0,
-	"Out2IndoorLossDb":0.0,
+	"INCARRatio":0.0,
+	"INCARLossdB":9.0,
+	"Out2IndoorLossDb":20.0,
 	"fname":"ITU_UMa_mMTC_A",
 	"NCells":19,
-	"BandwidthMHz": 10.0,
-  	"HighLossBuildingType":0.2,
-  	"LowLossBuildingType":0.8
+	"BandwidthMHz": 10.0
 }

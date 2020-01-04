@@ -5,7 +5,7 @@
     "SlotType": 0,
     "UEperSlot": 4,
     "fname": "SIM_UMa_mMTC_configA.json",
-    "ActiveBSCells": 19,
+    "ActiveBSCells": 128,
     "ActiveUECells": 19,
     "Extended": true,
     "ForceAllLOS": false,
@@ -21,5 +21,8 @@
         18
     ],
     "TrueCells": 0,
+    "SchedulerType": 1,
+    "IsDownLink": true,
+    "AntennaVTilt": 6.3,
     "WrapAround": true
 }

@@ -5,11 +5,11 @@
     "SlotType": 0,
     "NumUEperSlot": 4,
     "fname": "SIM_RMa_configB",
-    "ActiveBSCells": 19,
+    "ActiveBSCells": 128,
     "ActiveUECells": 19,
     "Extended": false,
     "ForceAllLOS": false,
-    "ShadowLoss": false,
+    "ShadowLoss": true,
     "LogInfo": true,
     "UEcells": [
         0,
@@ -24,6 +24,6 @@
     "TrueCells": -1,
     "SchedulerType": 1,
     "IsDownLink": true,
-    "AntennaVTilt": 7.2,
+    "AntennaVTilt": 6.8,
     "WrapAround": true
 }
