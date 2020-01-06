@@ -7,6 +7,19 @@
 	"NumTRxP": 3,
 	"AntennaScheme": "1x2 ",
 	"BSAntennaConfig": [8,1,2,1,1,1,1],
+	"EspacingHfactor": 0.0,
+	"EspacingVfactor": 0.8,
+	"SLAV": 30,
+	"HBeamWidth": 65,
+	"VBeamWidth": 65,
+	"GainDb": 8,
+	"MechanicalTilt": 90,
+	"ElectricalTilt": [
+		99
+	],
+	"Escan": [
+		0
+	],
 	"UEAntennaConfig": [1,1,1,1,1,1,1],
 	"SCSKHz": 15,
 	"FrameStructure": "DDDSU",

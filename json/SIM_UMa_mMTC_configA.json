@@ -7,9 +7,9 @@
     "fname": "SIM_UMa_mMTC_configA.json",
     "ActiveBSCells": 128,
     "ActiveUECells": 19,
-    "Extended": true,
+    "Extended": false,
     "ForceAllLOS": false,
-    "ShadowLoss": true,
+    "ShadowLoss": false,
     "LogInfo": false,
     "UEcells": [
         0,
