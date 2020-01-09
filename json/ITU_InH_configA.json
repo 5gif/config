@@ -25,7 +25,7 @@
 	"UEAntennaEleGainDbi": 0,
 	"N0": -174,
 	"TrafficModel": 0,
-	"NumUEperCell": 1000,
+	"NumUEperCell": 30,
 	"INCARRatio": 0,
 	"INCARLossdB": 10,
 	"Out2IndoorLossDb": 10,

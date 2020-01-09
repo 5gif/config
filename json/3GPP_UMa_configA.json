@@ -23,8 +23,8 @@
 	"GainDb": 8,
 	"MechanicalTilt": 90,
 	"ElectricalTilt": [
-		112.5,
-		157.5
+		157.5,
+		112.5
 	],
 	"Escan": [
 		-56.25,

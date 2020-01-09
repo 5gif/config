@@ -9,7 +9,7 @@
     "ActiveUECells":12,
     "Extended": true,
     "ForceAllLOS": false   ,
-    "ShadowLoss":false,
+    "ShadowLoss":true,
     "LogInfo" :false,
     "UEcells": [0 , 4,18],
     "BScells": [0,18],

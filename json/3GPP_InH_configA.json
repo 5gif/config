@@ -7,6 +7,20 @@
 	"NumTRxP": 12,
 	"AntennaScheme": "32x4 MU-MIMO, Reciprocity based, 4T SRS",
 	"BSAntennaConfig": [4,4,2,1,1,4,4],
+		"EspacingHfactor": 0.5,
+		"EspacingVfactor": 0.5,
+		"SLAV": 25,
+		"HBeamWidth": 90,
+		"VBeamWidth": 90,
+		"GainDb": 5,
+		"MechanicalTilt": 110,
+		"ElectricalTilt": [
+			90
+		],
+		"Escan": [
+			0
+		],
+
 	"UEAntennaConfig": [],
 	"SCSKHz": 30,
 	"FrameStructure": "DDDSU",
