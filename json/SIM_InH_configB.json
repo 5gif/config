@@ -20,5 +20,9 @@
         0,
         18
     ],
-    "TrueCells": 0
+    "TrueCells": 0,
+    "SchedulerType": 1,
+    "IsDownLink": true,
+    "AntennaVTilt": 0,
+    "WrapAround": false
 }
