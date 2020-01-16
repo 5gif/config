@@ -9,38 +9,47 @@ import (
 type NRconfig struct {
 	AntennaScheme string `json:"AntennaScheme"`
 	BS            struct {
-		AntennaConfig  []int     `json:"AntennaConfig"`
-		ElectricalTilt []float64 `json:"ElectricalTilt"`
-		Escan          []float64 `json:"Escan"`
-		GainDb         float64   `json:"GainDb"`
-		HBeamWidth     float64   `json:"HBeamWidth"`
-		Omni           bool      `json:"Omni"`
-		SLAV           float64   `json:"SLAV"`
-		VBeamWidth     float64   `json:"VBeamWidth"`
+		AntennaConfig   []int     `json:"AntennaConfig"`
+		ElectricalTilt  []float64 `json:"ElectricalTilt"`
+		Escan           []float64 `json:"Escan"`
+		GainDb          float64   `json:"GainDb"`
+		HBeamWidth      float64   `json:"HBeamWidth"`
+		Omni            bool      `json:"Omni"`
+		SLAV            float64   `json:"SLAV"`
+		VBeamWidth      float64   `json:"VBeamWidth"`
+		EspacingHfactor float64   `json:"EspacingHfactor"`
+		EspacingVfactor float64   `json:"EspacingVfactor"`
+		MechanicalTilt  float64   `json:"MechanicalTilt"`
+		Polarization    []float64 `json:"Polarization"`
+		PanelAz         []float64 `json:"PanelAz"`
+		PanelEl         []float64 `json:"PanelEl"`
 	} `json:"BS"`
 	CONFIG                  string  `json:"CONFIG"`
 	ChannelModel            string  `json:"ChannelModel"`
 	ENV                     string  `json:"ENV"`
-	EspacingHfactor         float64 `json:"EspacingHfactor"`
-	EspacingVfactor         float64 `json:"EspacingVfactor"`
 	FcGHz                   float64 `json:"FcGHz"`
 	FrameStructure          string  `json:"FrameStructure"`
 	LAYOUTTYPE              int     `json:"LAYOUTTYPE"`
-	MechanicalTilt          float64 `json:"MechanicalTilt"`
 	MobilityClass           int     `json:"MobilityClass"`
 	NumTRxP                 int     `json:"NumTRxP"`
 	ReliabiltyAntennaScheme string  `json:"ReliabiltyAntennaScheme"`
 	SCENARIO                string  `json:"SCENARIO"`
 	SCSKHz                  int     `json:"SCSKHz"`
 	UE                      struct {
-		AntennaConfig  []int     `json:"AntennaConfig"`
-		ElectricalTilt []float64 `json:"ElectricalTilt"`
-		Escan          []float64 `json:"Escan"`
-		GainDb         float64   `json:"GainDb"`
-		HBeamWidth     float64   `json:"HBeamWidth"`
-		Omni           bool      `json:"Omni"`
-		SLAV           float64   `json:"SLAV"`
-		VBeamWidth     float64   `json:"VBeamWidth"`
+		AntennaConfig   []int     `json:"AntennaConfig"`
+		ElectricalTilt  []float64 `json:"ElectricalTilt"`
+		Escan           []float64 `json:"Escan"`
+		GainDb          float64   `json:"GainDb"`
+		HBeamWidth      float64   `json:"HBeamWidth"`
+		Omni            bool      `json:"Omni"`
+		SLAV            float64   `json:"SLAV"`
+		VBeamWidth      float64   `json:"VBeamWidth"`
+		EspacingHfactor float64   `json:"EspacingHfactor"`
+		EspacingVfactor float64   `json:"EspacingVfactor"`
+		MechanicalTilt  float64   `json:"MechanicalTilt"`
+		Polarization    []float64 `json:"Polarization"`
+		PanelAz         []float64 `json:"PanelAz"`
+		PanelEl         []float64 `json:"PanelEl"`
 	} `json:"UE"`
 	fname string `json:"fname"`
 	Vtilt float64

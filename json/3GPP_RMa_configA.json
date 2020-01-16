@@ -12,7 +12,7 @@
 	    "HBeamWidth": 65,
 	    "VBeamWidth": 65,
 		"GainDb": 8,
-		"ElectricalTilt": [100.0],
+		"ElectricalTilt": [99.2],
 		"Escan": [0.0],
 		"Omni": false,
         "PanelAz": [0],
