@@ -5,9 +5,6 @@
 	"LAYOUTTYPE": 0,
 	"FcGHz": 4.0,
 	"NumTRxP": 57,
-	"EspacingHfactor": 0.5,
-	"EspacingVfactor": 0.8,
-	"MechanicalTilt": 90,
 	"AntennaScheme": "32x4 MU-MIMO, Reciprocity based, 4T SRS",
 	"BS":{
 		"AntennaConfig": [8,8,2,1,1,2,1],
@@ -17,19 +14,31 @@
 		"GainDb": 8,
 		"ElectricalTilt": [157.5,112.5],
 		"Escan": [-56.25,-33.75,-11.25,11.25,33.75,56.25],
-		"Omni": false
+		"Omni": false,
+        "PanelAz": [0],
+		"PanelEl": [90],
+        "EspacingHfactor": 0.5,
+	    "EspacingVfactor": 0.8,
+        "MechanicalTilt": 90,
+        "Polarization":[45,-45]
 			
 
 	},
 	"UE":{
-		"AntennaConfig": [2,4,2,1,2,1,1],
+		"AntennaConfig": [1,2,2,1,1,1,2],
 		"SLAV": 25,
 	    "HBeamWidth": 90,
 	    "VBeamWidth": 90,
 		"GainDb": 0,
 		"ElectricalTilt": [],
 		"Escan": [],
-		"Omni": true
+		"Omni": true,
+        "PanelAz": [],
+		"PanelEl": [],
+        "EspacingHfactor": 0.5,
+	    "EspacingVfactor": 0.0,
+        "MechanicalTilt": 90,
+        "Polarization":[0,90]
 			
 
 	},

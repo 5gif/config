@@ -17,7 +17,13 @@
 		"GainDb": 8,
 		"ElectricalTilt": [100.0],
 		"Escan": [0.0],
-		"Omni": false
+		"Omni": false,
+        "PanelAz": [0],
+		"PanelEl": [90],
+        "EspacingHfactor": 0.5,
+	    "EspacingVfactor": 0.8,
+        "MechanicalTilt": 90,
+        "Polarization":[45,-45]
 			
 
 	},
@@ -29,7 +35,13 @@
 		"GainDb": 0,
 		"ElectricalTilt": [],
 		"Escan": [],
-		"Omni": true
+		"Omni": true,
+        "PanelAz": [],
+		"PanelEl": [],
+        "EspacingHfactor": 0.5,
+	    "EspacingVfactor": 0.0,
+        "MechanicalTilt": 90,
+        "Polarization":[0,90]
 			
 
 	},

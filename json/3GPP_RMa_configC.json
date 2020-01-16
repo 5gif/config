@@ -5,9 +5,6 @@
 	"LAYOUTTYPE": 0,
 	"FcGHz": 0.7,
 	"NumTRxP": 57,
-	"EspacingHfactor": 0.5,
-	"EspacingVfactor": 0.8,
-	"MechanicalTilt": 90,
 	"AntennaScheme": "32x4 MU-MIMO, Reciprocity based, 4T SRS",
 	"BS":{
 		"AntennaConfig": [8,4,2,1,1,1,4],
@@ -17,7 +14,13 @@
 		"GainDb": 8,
 		"ElectricalTilt": [96.0],
 		"Escan": [0.0],
-		"Omni": false
+		"Omni": false,
+        "PanelAz": [0],
+		"PanelEl": [90],
+        "EspacingHfactor": 0.5,
+	    "EspacingVfactor": 0.8,
+        "MechanicalTilt": 90,
+        "Polarization":[45,-45]
 			
 
 	},
@@ -29,7 +32,13 @@
 		"GainDb": 0,
 		"ElectricalTilt": [],
 		"Escan": [],
-		"Omni": true
+		"Omni": true,
+        "PanelAz": [],
+		"PanelEl": [],
+        "EspacingHfactor": 0.5,
+	    "EspacingVfactor": 0.0,
+        "MechanicalTilt": 90,
+        "Polarization":[0,90]
 			
 
 	},
@@ -38,6 +47,6 @@
 	"ChannelModel": "A",
 	"ReliabiltyAntennaScheme": "",
 	"MobilityClass": 0,
-	"fname": "3GPP_RMa_configB"
+	"fname": "3GPP_RMa_configC"
     
 }
