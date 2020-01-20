@@ -7,7 +7,7 @@ import (
 
 	"os"
 
-	"github.com/5gif/channel/Cirgen"
+	cirConfig "github.com/5gif/channel/Cirgen/config"
 	"github.com/spf13/viper"
 	"github.com/wiless/cellular/antenna"
 	"github.com/wiless/vlib"
@@ -100,7 +100,7 @@ func (app *AppSetting) LoadApp() (*AppConfigs, error) {
 	var ITUcfg ITUconfig
 	var NRcfg NRconfig
 	var SIMcfg SIMconfig
-	var Channelcfg Cirgen.TestEnvironment
+	var Channelcfg cirConfig.TestEnvironment
 
 	log.Info("Loading ITU Config")
 	ITUcfg, err1 = ReadITUConfig(app.ITUfname)
@@ -116,7 +116,7 @@ func (app *AppSetting) LoadApp() (*AppConfigs, error) {
 	log.Info("Loading SIM Config ..done")
 
 	log.Info("Loading CHANNEL Config")
-	Channelcfg, err3 = Cirgen.ReadChanneltConfig(app.CHANNELfname)
+	Channelcfg, err3 = cirConfig.ReadChannelConfig(app.CHANNELfname)
 	log.Info("Loading Channel Config ..done")
 
 	var AAS antenna.SettingAAS
@@ -143,7 +143,7 @@ func (app *AppSetting) LoadApp() (*AppConfigs, error) {
 	DefaultApp.NRcfg = NRcfg
 	DefaultApp.SIMcfg = SIMcfg
 	DefaultApp.AAScfg = AAS
-	DefaultApp.TestEnvironment = Channelcfg
+	DefaultApp.Channelcfg = Channelcfg
 
 	return &DefaultApp, err
 	// return ITUcfg
