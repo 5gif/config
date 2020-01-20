@@ -7,6 +7,7 @@ import (
 
 	"os"
 
+	"github.com/5gif/channel/Cirgen"
 	"github.com/spf13/viper"
 	"github.com/wiless/cellular/antenna"
 	"github.com/wiless/vlib"
@@ -23,11 +24,12 @@ var CurrDIR string
 
 // AppSetting setting to read and write config files
 type AppSetting struct {
-	INdir    string `json:"inputdir"`
-	OUTdir   string `json:"outputdir"`
-	ITUfname string `json:"itu"`
-	NRfname  string `json:"nr"`
-	SIMfname string `json:"sim"`
+	INdir        string `json:"inputdir"`
+	OUTdir       string `json:"outputdir"`
+	ITUfname     string `json:"itu"`
+	NRfname      string `json:"nr"`
+	SIMfname     string `json:"sim"`
+	CHANNELfname string `json: "channelcfg"`
 }
 
 func init() {
@@ -98,6 +100,7 @@ func (app *AppSetting) LoadApp() (*AppConfigs, error) {
 	var ITUcfg ITUconfig
 	var NRcfg NRconfig
 	var SIMcfg SIMconfig
+	var Channelcfg Cirgen.TestEnvironment
 
 	log.Info("Loading ITU Config")
 	ITUcfg, err1 = ReadITUConfig(app.ITUfname)
@@ -111,6 +114,10 @@ func (app *AppSetting) LoadApp() (*AppConfigs, error) {
 	SIMcfg, err3 = ReadSIMConfig(app.SIMfname)
 	SIMcfg.SetSIMconfig(ITUcfg, NRcfg)
 	log.Info("Loading SIM Config ..done")
+
+	log.Info("Loading CHANNEL Config")
+	Channelcfg, err3 = Cirgen.ReadChanneltConfig(app.CHANNELfname)
+	log.Info("Loading Channel Config ..done")
 
 	var AAS antenna.SettingAAS
 	if _, err := os.Stat("sector.json"); os.IsNotExist(err) {
@@ -136,6 +143,7 @@ func (app *AppSetting) LoadApp() (*AppConfigs, error) {
 	DefaultApp.NRcfg = NRcfg
 	DefaultApp.SIMcfg = SIMcfg
 	DefaultApp.AAScfg = AAS
+	DefaultApp.TestEnvironment = Channelcfg
 
 	return &DefaultApp, err
 	// return ITUcfg

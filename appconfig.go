@@ -1,6 +1,7 @@
 package config
 
 import (
+	channel "github.com/5gif/channel/Cirgen"
 	"github.com/wiless/cellular/antenna"
 )
 
@@ -26,10 +27,11 @@ import (
 // AppConfigs - contains nested structures of other config structures
 type AppConfigs struct {
 	AppSetting
-	ITUcfg ITUconfig
-	NRcfg  NRconfig
-	SIMcfg SIMconfig
-	AAScfg antenna.SettingAAS
+	ITUcfg     ITUconfig
+	NRcfg      NRconfig
+	SIMcfg     SIMconfig
+	AAScfg     antenna.SettingAAS
+	Channelcfg channel.TestEnvironment
 }
 
 // DefaultApp Global variable of all Configurations used in the Application
