@@ -1,3 +1,52 @@
 {
-    "PARAMETERs": "Undefined"
+	"ENV": "InH",
+	"SCENARIO": "eMBB",
+	"CONFIG": "C",
+	"LAYOUTTYPE": 0,
+	"FcGHz": 70,
+	"NumTRxP": 36,
+	"AntennaScheme": "32x4 MU-MIMO, Reciprocity based, 4T SRS",
+	"BS":{
+		"AntennaConfig": [8,16,2,1,1,2,2],
+		"SLAV":25,
+	    "HBeamWidth": 90,
+	    "VBeamWidth": 90,
+		"GainDb": 5,
+		"ElectricalTilt": [22.5,67.5,112.5,157.5],
+		"Escan": [-78.75,-56.25,-33.75,-11.25,11.25,33.75,56.25,78.75],
+		"Omni": false,
+        "PanelAz": [0],
+		"PanelEl": [90],
+        "EspacingHfactor": 0.5,
+	    "EspacingVfactor": 0.5,
+        "MechanicalTilt": 110,
+        "Polarization":[45,-45]	
+			
+
+	},
+	"UE":{
+		"AntennaConfig": [2,4,2,1,2,1,1],
+		"SLAV": 25,
+	    "HBeamWidth": 90,
+	    "VBeamWidth": 90,
+		"GainDb": 5,
+		"ElectricalTilt": [135.0,45.0],
+		"Escan": [-67.5,-22.5,22.5,67.5],
+		"Omni": false,
+        "PanelAz": [0,180],
+		"PanelEl": [90],
+        "EspacingHfactor": 0.5,
+	    "EspacingVfactor": 0.5,
+        "MechanicalTilt": 90,
+        "Polarization":[0,90]
+			
+
+	},
+	"SCSKHz": 30,
+	"FrameStructure": "DDDSU",
+	"ChannelModel": "A",
+	"ReliabiltyAntennaScheme": "",
+	"MobilityClass": 0,
+	"fname": "3GPP_InH_configC"
+    
 }

@@ -1,21 +1,49 @@
 {
-    "ENV": "UMa",
+	"ENV": "UMa",
 	"SCENARIO": "eMBB",
 	"CONFIG": "B",
-    "LAYOUTTYPE": 0,
-	"FcGHz":4.0,
+	"LAYOUTTYPE": 0,
+	"FcGHz": 30.0,
 	"NumTRxP": 57,
-	"AntennaScheme": "",
-	"BSAntennaConfig": [],
-	"UEAntennaConfig": [],
-	"SCSKHz": -1,
-	"FrameStructure": "",
-	"ChannelModel": "",
+	"AntennaScheme": "32x4 MU-MIMO, Reciprocity based, 4T SRS",
+	"BS":{
+		"AntennaConfig": [4,8,2,2,2,1,1],
+		"SLAV": 30,
+	    "HBeamWidth": 65,
+	    "VBeamWidth": 65,
+		"GainDb": 8,
+        "EspacingHfactor": 0.5,
+	    "EspacingVfactor": 0.5,
+        "MechanicalTilt": 90,
+		"ElectricalTilt": [157.5,112.5],
+		"Escan": [-56.25,-33.75,-11.25,11.25,33.75,56.25],
+		"Omni": false,
+		"PanelAz": [0],
+		"PanelEl": [90]			
+	},
+	"UE":{
+		"AntennaConfig": [2,4,2,1,2,1,1],
+		"SLAV": 25,
+	    "HBeamWidth": 90,
+	    "VBeamWidth": 90,
+		"GainDb": 5,  
+        "EspacingHfactor": 0.5,
+	    "EspacingVfactor": 0.5,
+        "MechanicalTilt": 90,
+		"ElectricalTilt": [135.0,45.0],
+		"Escan": [-112.5,-157.5,-67.5,-22.5,22.5,67.5,112.5,157.5],
+		"Omni": false,
+		"PanelAz":[0,180],
+		"PanelEl":[90]
+	},
+	"SCSKHz": 30,
+	"FrameStructure": "DDDSU",
+	"ChannelModel": "A",
 	"ReliabiltyAntennaScheme": "",
 	"MobilityClass": 0,
-	"fname":"3GPP_UMa_configB"
+	"fname": "3GPP_UMa_configB"
+    
 }
-
 
 
 

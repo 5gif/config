@@ -6,12 +6,46 @@
 	"FcGHz":0.700,
 	"NumTRxP": 3,
 	"AntennaScheme": "1x2 ",
-	"BSAntennaConfig": [8,1,2,1,1,1,1],
-	"UEAntennaConfig": [1,1,1,1,1,1,1],
+	"BS":{
+		"AntennaConfig": [8,1,2,1,1,1,1],
+		"SLAV": 30,
+	    "HBeamWidth": 65,
+	    "VBeamWidth": 65,
+		"GainDb": 8,
+		"ElectricalTilt": [93.0],
+		"Escan": [0.0],
+		"Omni": false,
+        "PanelAz": [0],
+		"PanelEl": [90],
+        "EspacingHfactor": 0.0,
+	    "EspacingVfactor": 0.8,
+        "MechanicalTilt": 90,
+        "Polarization":[45,-45]
+			
+
+	},
+	"UE":{
+		"AntennaConfig": [1,1,1,1,1,1,1],
+		"SLAV": 25,
+	    "HBeamWidth": 90,
+	    "VBeamWidth": 90,
+		"GainDb": 0,
+		"ElectricalTilt": [],
+		"Escan": [],
+		"Omni": true,
+        "PanelAz": [],
+		"PanelEl": [],
+        "EspacingHfactor": 0.0,
+	    "EspacingVfactor": 0.0,
+        "MechanicalTilt": 90,
+        "Polarization":[0]
+			
+
+	},
 	"SCSKHz": 15,
 	"FrameStructure": "DDDSU",
-	"ChannelModel": "B",
+	"ChannelModel": "A",
 	"ReliabiltyAntennaScheme": "",
 	"MobilityClass": 0,
-	"fname":"3GPP_UMa_mMTCB.json"
+	"fname":"3GPP_UMa_mMTC_ConfigB.json"
 }

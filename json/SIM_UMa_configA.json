@@ -17,6 +17,6 @@
     "SchedulerType": 1,
     "IsDownLink": true,
     "AntennaVTilt": 0,
-    "WrapAround": true
+    "WrapAround": false
   }
 

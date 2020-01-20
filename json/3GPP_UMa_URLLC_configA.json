@@ -4,26 +4,44 @@
     "CONFIG": "A",
     "LAYOUTTYPE": 0,
     "FcGHz": 4.0,
-    "NumTRxP": 3,
+    "NumTRxP": 57,
     "AntennaScheme": "1x2 ",
-    "BSAntennaConfig": [
-        8,
-        1,
-        2,
-        1,
-        1,
-        1,
-        1
-    ],
-    "UEAntennaConfig": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
-    ],
+    "BS":{
+		"AntennaConfig": [8,8,2,1,1,2,1],
+		"SLAV": 30,
+	    "HBeamWidth": 65,
+	    "VBeamWidth": 65,
+		"GainDb": 8,
+		"ElectricalTilt": [99.0],
+		"Escan": [0.0],
+		"Omni": false,
+        "PanelAz": [0],
+		"PanelEl": [90],
+        "EspacingHfactor": 0.5,
+	    "EspacingVfactor": 0.8,
+        "MechanicalTilt": 90,
+        "Polarization":[45,-45]
+			
+
+	},
+	"UE":{
+		"AntennaConfig": [1,2,2,1,1,1,2],
+		"SLAV": 25,
+	    "HBeamWidth": 90,
+	    "VBeamWidth": 90,
+		"GainDb": 0,
+		"ElectricalTilt": [],
+		"Escan": [],
+		"Omni": true,
+        "PanelAz": [],
+		"PanelEl": [],
+        "EspacingHfactor": 0.5,
+	    "EspacingVfactor": 0.0,
+        "MechanicalTilt": 90,
+        "Polarization":[0,90]
+			
+
+	},
     "SCSKHz": 15,
     "FrameStructure": "DDDSU",
     "ChannelModel": "A",
