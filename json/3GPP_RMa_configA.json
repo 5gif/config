@@ -22,7 +22,7 @@
         "MechanicalTilt": 90,
         "Polarization":[45,-45]
 
-			
+
 
 	},
 	"UE":{
@@ -40,7 +40,7 @@
 	    "EspacingVfactor": 0.0,
         "MechanicalTilt": 90.0,
         "Polarization":[0,90]
-			
+
 
 	},
 	"SCSKHz": 30,
@@ -49,5 +49,5 @@
 	"ReliabiltyAntennaScheme": "",
 	"MobilityClass": 0,
 	"fname": "3GPP_RMa_configA"
-    
+
 }
