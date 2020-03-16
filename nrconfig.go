@@ -286,3 +286,8 @@ func Wrap180To180(degree float64) float64 {
 	}
 	return degree
 }
+
+func (ant *Antenna) GetPorts() int {
+	p := ant.AntennaConfig[5] * ant.AntennaConfig[6]
+	return p
+}
