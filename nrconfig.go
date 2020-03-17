@@ -1,6 +1,7 @@
 package config
 
 import (
+	"fmt"
 	"math"
 	"math/cmplx"
 
@@ -87,7 +88,7 @@ func (i *NRconfig) DefaultNRconfig() {
 	i.FcGHz = 0.7
 	i.NumTRxP = 57
 	i.AntennaScheme = "32x4 MU-MIMO, Reciprocity based, 4T SRS"
-	i.BS.AntennaConfig = []int{8, 4, 2, 1, 1, 2, 2}
+	i.BS.AntennaConfig = []int{8, 8, 2, 1, 1, 2, 1}
 	i.BS.SLAV = 30
 	i.BS.HBeamWidth = 65
 	i.BS.VBeamWidth = 65
@@ -103,7 +104,7 @@ func (i *NRconfig) DefaultNRconfig() {
 	i.BS.Polarization = []float64{45, -45}
 
 	i.UE.SLAV = 25
-	i.UE.AntennaConfig = []int{8, 4, 2, 1, 1, 2, 2}
+	i.UE.AntennaConfig = []int{8, 4, 2, 1, 1, 1, 1}
 	i.UE.HBeamWidth = 90
 	i.UE.VBeamWidth = 90
 	i.UE.GainDb = 0
@@ -288,6 +289,89 @@ func Wrap180To180(degree float64) float64 {
 }
 
 func (ant *Antenna) GetPorts() int {
-	p := ant.AntennaConfig[5] * ant.AntennaConfig[6]
+	//polarization can be 1 or 2
+	//error handling to be done
+
+	polar := ant.AntennaConfig[2]
+	pv := ant.AntennaConfig[3]
+	ph := ant.AntennaConfig[4]
+	if pv > 1 || ph > 1 {
+		log.Panic("Unsupported Panels >1")
+	}
+
+	p := ant.AntennaConfig[5] * ant.AntennaConfig[6] * polar * pv * ph
 	return p
+}
+
+func (ant *Antenna) FindLocation() [][]vlib.Location3D {
+
+	var A, B, C, D vlib.Location3D
+	var Centre [][]vlib.Location3D
+	p := ant.GetPorts()
+
+	N := float64(ant.AntennaConfig[0])
+	M := float64(ant.AntennaConfig[1])
+	Np := float64(ant.AntennaConfig[5])
+	Mp := float64(ant.AntennaConfig[6])
+	Centre = make([][]vlib.Location3D, int(Np))
+	dh := ant.EspacingHfactor
+	dv := ant.EspacingVfactor
+
+	A.X = 0.0
+	A.Y = 0.0
+	A.Z = 0.0
+	B.X = 0.0
+	B.Y = (N * dv) / Np
+	B.Z = 0.0
+	C.X = (M * dh) / Mp
+	C.Y = (N * dv) / Np
+	C.Z = 0.0
+	D.X = (M * dh) / Mp
+	D.Y = 0.0
+	D.Z = 0.0
+
+	var ref vlib.Location3D
+	ref.X = D.X - A.X
+	ref.Y = B.Y - A.Y
+	ref.Z = B.Z - A.Z
+
+	for i := 0; i < int(Np); i++ {
+		Centre[i] = make([]vlib.Location3D, int(Mp))
+
+		Centre[i][0].Y = ref.Y + dv*Np*float64(i)
+
+		for j := 0; j < int(Mp); j++ {
+			Centre[i][j].X = ref.X + dh*Mp*float64(j)
+			Centre[i][j].Y = Centre[i][0].Y
+			Centre[i][j].Z = ref.Z
+
+		}
+	}
+
+	Dx := make([]vlib.MatrixF, p)
+	ind := 0
+	drx := vlib.NewMatrixF(3, 1)
+
+	for i := 0; i < int(Np); i++ {
+		for j := 0; j < int(Mp); j++ {
+
+			drx[0][0] = Centre[i][j].X
+			drx[1][0] = Centre[i][j].Y
+			drx[2][0] = Centre[i][j].Z
+		}
+		Dx[ind] = drx
+		ind = ind + 1
+
+	}
+
+	for i := 0; i < p/2; i++ {
+		Dx[ind] = Dx[i]
+		ind = ind + 1
+
+	}
+
+	fmt.Println("DX: ", Dx)
+
+	return Centre
+
 }
