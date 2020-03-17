@@ -87,7 +87,7 @@ func (i *NRconfig) DefaultNRconfig() {
 	i.FcGHz = 0.7
 	i.NumTRxP = 57
 	i.AntennaScheme = "32x4 MU-MIMO, Reciprocity based, 4T SRS"
-	i.BS.AntennaConfig = []int{8, 8, 2, 1, 1, 2, 1}
+	i.BS.AntennaConfig = []int{8, 8, 1, 1, 1, 2, 1}
 	i.BS.SLAV = 30
 	i.BS.HBeamWidth = 65
 	i.BS.VBeamWidth = 65
@@ -103,7 +103,7 @@ func (i *NRconfig) DefaultNRconfig() {
 	i.BS.Polarization = []float64{45, -45}
 
 	i.UE.SLAV = 25
-	i.UE.AntennaConfig = []int{8, 4, 2, 1, 1, 1, 1}
+	i.UE.AntennaConfig = []int{8, 4, 1, 1, 1, 1, 1}
 	i.UE.HBeamWidth = 90
 	i.UE.VBeamWidth = 90
 	i.UE.GainDb = 0
@@ -303,6 +303,10 @@ func (ant *Antenna) GetPorts() int {
 }
 
 func (ant *Antenna) FindTxruLocation() []vlib.MatrixF {
+	//Done only for 1 panel
+	if ant.AntennaConfig[2]*ant.AntennaConfig[3] > 1 {
+		log.Panic("Number of Panels more than 1")
+	}
 
 	var A, B, C, D vlib.Location3D
 	var Centre [][]vlib.Location3D
@@ -350,27 +354,17 @@ func (ant *Antenna) FindTxruLocation() []vlib.MatrixF {
 	var Dx = make([]vlib.MatrixF, p)
 	ind := 0
 
-	for i := 0; i < int(Np); i++ {
-		for j := 0; j < int(Mp); j++ {
-			drx := vlib.NewMatrixF(3, 1)
-			drx[0][0] = Centre[i][j].X
-			drx[1][0] = Centre[i][j].Y
-			drx[2][0] = Centre[i][j].Z
-			Dx[ind] = drx
-			ind = ind + 1
+	for ii := 0; ii < ant.AntennaConfig[2]; ii++ {
+		for i := 0; i < int(Np); i++ {
+			for j := 0; j < int(Mp); j++ {
+				drx := vlib.NewMatrixF(3, 1)
+				drx[0][0] = Centre[i][j].X
+				drx[1][0] = Centre[i][j].Y
+				drx[2][0] = Centre[i][j].Z
+				Dx[ind] = drx
+				ind = ind + 1
 
-		}
-
-	}
-
-	for i := 0; i < int(Np); i++ {
-		for j := 0; j < int(Mp); j++ {
-			drx := vlib.NewMatrixF(3, 1)
-			drx[0][0] = Centre[i][j].X
-			drx[1][0] = Centre[i][j].Y
-			drx[2][0] = Centre[i][j].Z
-			Dx[ind] = drx
-			ind = ind + 1
+			}
 
 		}
 
