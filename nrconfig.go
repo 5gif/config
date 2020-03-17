@@ -1,7 +1,6 @@
 package config
 
 import (
-	"fmt"
 	"math"
 	"math/cmplx"
 
@@ -303,7 +302,7 @@ func (ant *Antenna) GetPorts() int {
 	return p
 }
 
-func (ant *Antenna) FindLocation() [][]vlib.Location3D {
+func (ant *Antenna) FindTxruLocation() []vlib.MatrixF {
 
 	var A, B, C, D vlib.Location3D
 	var Centre [][]vlib.Location3D
@@ -348,30 +347,35 @@ func (ant *Antenna) FindLocation() [][]vlib.Location3D {
 		}
 	}
 
-	Dx := make([]vlib.MatrixF, p)
+	var Dx = make([]vlib.MatrixF, p)
 	ind := 0
-	drx := vlib.NewMatrixF(3, 1)
 
 	for i := 0; i < int(Np); i++ {
 		for j := 0; j < int(Mp); j++ {
-
+			drx := vlib.NewMatrixF(3, 1)
 			drx[0][0] = Centre[i][j].X
 			drx[1][0] = Centre[i][j].Y
 			drx[2][0] = Centre[i][j].Z
+			Dx[ind] = drx
+			ind = ind + 1
+
 		}
-		Dx[ind] = drx
-		ind = ind + 1
 
 	}
 
-	for i := 0; i < p/2; i++ {
-		Dx[ind] = Dx[i]
-		ind = ind + 1
+	for i := 0; i < int(Np); i++ {
+		for j := 0; j < int(Mp); j++ {
+			drx := vlib.NewMatrixF(3, 1)
+			drx[0][0] = Centre[i][j].X
+			drx[1][0] = Centre[i][j].Y
+			drx[2][0] = Centre[i][j].Z
+			Dx[ind] = drx
+			ind = ind + 1
+
+		}
 
 	}
 
-	fmt.Println("DX: ", Dx)
-
-	return Centre
+	return Dx
 
 }
