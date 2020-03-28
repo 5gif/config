@@ -23,11 +23,16 @@ var CurrDIR string
 
 // AppSetting setting to read and write config files
 type AppSetting struct {
-	INdir    string `json:"inputdir"`
-	OUTdir   string `json:"outputdir"`
-	ITUfname string `json:"itu"`
-	NRfname  string `json:"nr"`
-	SIMfname string `json:"sim"`
+	INdir          string `json:"inputdir"`
+	OUTdir         string `json:"outputdir"`
+	ITUfname       string `json:"itu"`
+	NRfname        string `json:"nr"`
+	SIMfname       string `json:"sim"`
+	CHANNELfname   string `json:"channelcfg"`
+	ASSOCRxTxfname string `json:"assocRxTx"`
+	UELOCfname     string `json:"uelocation"`
+	BSLOCfname     string `json:"bslocation"`
+	LINKfname      string `json:"linkproperties"`
 }
 
 func init() {
@@ -40,7 +45,9 @@ func init() {
 func (app *AppSetting) FromJSON(fname string) {
 	pwd, _ := os.Getwd()
 	viper.SetConfigFile(pwd + "/" + fname)
+
 	viper.SetConfigType("json")
+
 	err := viper.ReadInConfig()
 	if err != nil {
 		log.Print("ReadInConfig: ", err)
@@ -98,6 +105,7 @@ func (app *AppSetting) LoadApp() (*AppConfigs, error) {
 	var ITUcfg ITUconfig
 	var NRcfg NRconfig
 	var SIMcfg SIMconfig
+	// var Channelcfg cirConfig.TestEnvironment
 
 	log.Info("Loading ITU Config")
 	ITUcfg, err1 = ReadITUConfig(app.ITUfname)
@@ -136,6 +144,7 @@ func (app *AppSetting) LoadApp() (*AppConfigs, error) {
 	DefaultApp.NRcfg = NRcfg
 	DefaultApp.SIMcfg = SIMcfg
 	DefaultApp.AAScfg = AAS
+	// DefaultApp.Channelcfg = Channelcfg
 
 	return &DefaultApp, err
 	// return ITUcfg
