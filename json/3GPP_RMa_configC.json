@@ -12,7 +12,7 @@
 	    "HBeamWidth": 65,
 	    "VBeamWidth": 65,
 		"GainDb": 8,
-		"ElectricalTilt": [99.2],
+		"ElectricalTilt": [96.0],
 		"Escan": [0.0],
 		"Omni": false,
         "PanelAz": [0],
@@ -21,8 +21,6 @@
 	    "EspacingVfactor": 0.8,
         "MechanicalTilt": 90,
         "Polarization":[45,-45]
-			
-
 	},
 	"UE":{
 		"AntennaConfig": [1,2,2,1,1,1],
@@ -39,8 +37,6 @@
 	    "EspacingVfactor": 0.0,
         "MechanicalTilt": 90,
         "Polarization":[0,90]
-			
-
 	},
 	"SCSKHz": 30,
 	"FrameStructure": "DDDSU",

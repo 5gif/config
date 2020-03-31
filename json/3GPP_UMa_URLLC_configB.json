@@ -3,7 +3,7 @@
     "SCENARIO": "URLLC",
     "CONFIG": "B",
     "LAYOUTTYPE": 0,
-    "FcGHz": 4.0,
+    "FcGHz": 0.7,
     "NumTRxP": 57,
     "BS":{
 		"AntennaConfig": [8,1,2,1,1,1,1],
@@ -46,5 +46,5 @@
     "ChannelModel": "A",
     "ReliabiltyAntennaScheme": "",
     "MobilityClass": 0,
-    "fname": "3GPP_UMa_URLLC_ConfigB.json"
+    "fname": "3GPP_UMa_URLLC_ConfigB"
 }

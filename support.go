@@ -27,7 +27,6 @@ func PrintStructsPretty(c interface{}) {
 // SwitchInput ...
 func SwitchInput() {
 	// GOPATH := os.Getenv("GOPATH")
-	CurrDIR, _ = os.Getwd()
 	// InDIR = GOPATH + "/src/github.com/5gif/" + indir
 	log.Println("Switching 2 Input : ", InDIR)
 	os.Chdir(InDIR)
@@ -36,8 +35,6 @@ func SwitchInput() {
 // SwitchOutput ...
 func SwitchOutput() {
 	// GOPATH := os.Getenv("GOPATH")
-	CurrDIR, _ = os.Getwd()
-
 	log.Println("Switching 2 Output : ", OutDIR)
 	os.Chdir(OutDIR)
 }

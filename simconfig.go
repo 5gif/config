@@ -127,7 +127,6 @@ func (s *SIMconfig) SetSIMconfig(itucfg ITUconfig, nrcfg NRconfig) {
 	s.CellRadius = itucfg.ISD / math.Sqrt(3.0)
 	s.ISD = itucfg.ISD
 	log.Infof("SIMconfig Initialized : %#v", s)
-	s.SaveSIMconfig()
 	// return C1, CellRadius, CarriersGHz
 }
 

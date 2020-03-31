@@ -3,20 +3,21 @@
     "SimulationTime" : 1,
     "FrameType" : 0,
     "SlotType" : 0,
-    "UEperSlot" : 4,
-    "fname":"SIM_UMa_configA.json",
+    "NumUEperSlot": 4,
+    "NumInterference":3,
+    "fname":"SIM_UMa_configA",
     "ActiveBSCells":128,
     "ActiveUECells":19,
     "Extended": false,
     "ForceAllLOS": false,
     "ShadowLoss":true,
     "LogInfo" :false,
-    "UEcells": [0 , 4,18],
-    "BScells": [0,18],
-    "TrueCells":0,
+    "UEcells": [0 , 1,2],
+    "BScells": [0,1,2],
+    "TrueCells":-1,
     "SchedulerType": 1,
     "IsDownLink": true,
-    "AntennaVTilt": 0,
-    "WrapAround": false
+    "AntennaVTilt": 0.0,
+    "WrapAround": true
   }
 

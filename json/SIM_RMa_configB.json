@@ -4,6 +4,7 @@
     "FrameType": 0,
     "SlotType": 0,
     "NumUEperSlot": 4,
+    "NumInterference":3,
     "fname": "SIM_RMa_configB",
     "ActiveBSCells": 128,
     "ActiveUECells": 19,

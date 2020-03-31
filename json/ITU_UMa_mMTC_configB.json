@@ -14,8 +14,8 @@
 	"TxPowerDbm": 46.0,
 	"UETxDbm": 23,
   "BuildingTypeLoss": 0.8,
-	"NumBSelements": 64,
-	"NumUEelements": 2,
+	"NumBSelements": 16,
+	"NumUEelements": 1,
 	"INDOORRatio": 0.8,
 	"IndoorSpeed":3.0,
 	"Outdoorspeed": 3.0,
@@ -31,7 +31,5 @@
 	"Out2IndoorLossDb":0.0, 
 	"fname":"ITU_UMa_mMTC_B",
 	"NCells":19,
-	"BandwidthMHz": 10.0,
-  "HighLossBuildingType":.2,
-  "LowLossBuildingType":.8
+	"BandwidthMHz": 10.0
 }

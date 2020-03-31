@@ -1,14 +1,13 @@
 {
-    "SCENARIO": "SIM_RMa_configC",
+    "SCENARIO": "SIM_UMa_mMTC__configB",
     "SimulationTime": 1,
     "FrameType": 0,
     "SlotType": 0,
-    "NumUEperSlot": 4,
-    "NumInterference":3,
-    "fname": "SIM_RMa_configC",
+    "UEperSlot": 4,
+    "fname": "SIM_UMa_mMTC_configB",
     "ActiveBSCells": 128,
     "ActiveUECells": 19,
-    "Extended": true,
+    "Extended": false,
     "ForceAllLOS": false,
     "ShadowLoss": true,
     "LogInfo": false,
@@ -22,9 +21,9 @@
         1,
         2
     ],
-    "TrueCells": -1,
+    "TrueCells": 0,
     "SchedulerType": 1,
     "IsDownLink": true,
-    "AntennaVTilt": 7.4,
+    "AntennaVTilt": 0.0,
     "WrapAround": true
 }

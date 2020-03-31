@@ -10,7 +10,7 @@
 	"ActiveUECells": 19,
 	"Extended": false,
 	"ForceAllLOS": false,
-	"ShadowLoss": false,
+	"ShadowLoss": true,
 	"LogInfo": false,
 	"UEcells": [
 		0,
@@ -26,5 +26,5 @@
 	"SchedulerType": 1,
 	"IsDownLink": true,
 	"AntennaVTilt": 0.0,
-	"WrapAround": false
+	"WrapAround": true
 }

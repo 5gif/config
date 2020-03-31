@@ -25,7 +25,7 @@
 	"N0": -174,
 	"TrafficModel": 1,
 	"NumUEperCell": 30,
-	"INCARRatio": 0.8,
+	"INCARRatio": 0.0,
 	"INCARLossdB": 9.0,
 	"Out2IndoorLossDb": 20.0,
 	"fname": "ITU_UMa_URLLC_A",

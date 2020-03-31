@@ -3,20 +3,21 @@
     "SimulationTime" : 1,
     "FrameType" : 0,
     "SlotType" : 0,
-    "UEperSlot" : 4,
+    "NumUEperSlot": 4,
+    "NumInterference":3,
     "fname":"SIM_InH_configA",
     "ActiveBSCells":12,
     "ActiveUECells":12,
-    "Extended": true,
+    "Extended": false,
     "ForceAllLOS": false   ,
     "ShadowLoss":true,
     "LogInfo" :false,
-    "UEcells": [0 , 4,18],
-    "BScells": [0,18],
+    "UEcells": [0 , 1,2],
+    "BScells": [0,1,2],
     "TrueCells":0,
     "SchedulerType": 1,
     "IsDownLink": true,
     "AntennaVTilt": 0,
-    "WrapAround": false
+    "WrapAround": true
   }
 
