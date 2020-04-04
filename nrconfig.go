@@ -15,6 +15,7 @@ type Antenna struct {
 	Escan           []float64 `json:"Escan"`
 	GainDb          float64   `json:"GainDb"`
 	HBeamWidth      float64   `json:"HBeamWidth"`
+	Calib           bool      `json:"Calib"`
 	Omni            bool      `json:"Omni"`
 	SLAV            float64   `json:"SLAV"`
 	VBeamWidth      float64   `json:"VBeamWidth"`
@@ -88,6 +89,7 @@ func (i *NRconfig) DefaultNRconfig() {
 	i.NumTRxP = 57
 	i.AntennaScheme = "32x4 MU-MIMO, Reciprocity based, 4T SRS"
 	i.BS.AntennaConfig = []int{8, 8, 1, 1, 1, 2, 1}
+	i.BS.Calib = true
 	i.BS.SLAV = 30
 	i.BS.HBeamWidth = 65
 	i.BS.VBeamWidth = 65
@@ -109,6 +111,7 @@ func (i *NRconfig) DefaultNRconfig() {
 	i.UE.GainDb = 0
 	i.UE.ElectricalTilt = []float64{}
 	i.UE.Escan = []float64{}
+	i.UE.Calib = true
 	i.UE.Omni = true
 	i.UE.PanelAz = []float64{}
 	i.UE.PanelEl = []float64{}

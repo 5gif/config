@@ -14,14 +14,15 @@
 		"GainDb": 5,
 		"ElectricalTilt": [90.0],
 		"Escan": [0.0],
+		"Calib": true,
 		"Omni": false,
         "PanelAz": [0],
 		"PanelEl": [90],
         "EspacingHfactor": 0.5,
 	    "EspacingVfactor": 0.5,
         "MechanicalTilt": 110,
-        "Polarization":[45,-45]	
-			
+        "Polarization":[45,-45]
+
 
 	},
 	"UE":{
@@ -32,6 +33,7 @@
 		"GainDb": 0,
 		"ElectricalTilt": [],
 		"Escan": [],
+		"Calib": true,
 		"Omni": true,
         "PanelAz": [],
 		"PanelEl": [],
@@ -39,7 +41,7 @@
 	    "EspacingVfactor": 0.0,
         "MechanicalTilt": 90,
         "Polarization":[0,90]
-			
+
 
 	},
 	"SCSKHz": 30,
@@ -48,6 +50,6 @@
 	"ReliabiltyAntennaScheme": "",
 	"MobilityClass": 0,
 	"fname": "3GPP_InH_configA"
-    
+
 }
 

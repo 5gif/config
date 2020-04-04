@@ -13,6 +13,7 @@
 		"GainDb": 8,
 		"ElectricalTilt": [99.0],
 		"Escan": [0.0],
+		"Calib": true,
 		"Omni": false,
         "PanelAz": [0],
 		"PanelEl": [90],
@@ -20,7 +21,7 @@
 	    "EspacingVfactor": 0.8,
         "MechanicalTilt": 90,
         "Polarization":[45,-45]
-			
+
 
 	},
 	"UE":{
@@ -31,6 +32,7 @@
 		"GainDb": 0,
 		"ElectricalTilt": [],
 		"Escan": [],
+		"Calib": true,
 		"Omni": true,
         "PanelAz": [],
 		"PanelEl": [],
@@ -38,7 +40,7 @@
 	    "EspacingVfactor": 0.0,
         "MechanicalTilt": 90,
         "Polarization":[0,90]
-			
+
 
 	},
     "SCSKHz": 15,

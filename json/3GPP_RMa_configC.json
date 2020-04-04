@@ -14,6 +14,7 @@
 		"GainDb": 8,
 		"ElectricalTilt": [96.0],
 		"Escan": [0.0],
+		"Calib": true,
 		"Omni": false,
         "PanelAz": [0],
 		"PanelEl": [90],
@@ -30,6 +31,7 @@
 		"GainDb": 0,
 		"ElectricalTilt": [],
 		"Escan": [],
+		"Calib": true,
 		"Omni": true,
         "PanelAz": [],
 		"PanelEl": [],
@@ -44,5 +46,5 @@
 	"ReliabiltyAntennaScheme": "",
 	"MobilityClass": 0,
 	"fname": "3GPP_RMa_configC"
-    
+
 }
