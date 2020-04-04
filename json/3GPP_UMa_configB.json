@@ -32,7 +32,12 @@
 	    "EspacingVfactor": 0.5,
         "MechanicalTilt": 90,
 		"ElectricalTilt": [135.0,45.0],
-		"Escan": [-112.5,-157.5,-67.5,-22.5,22.5,67.5,112.5,157.5],
+		"Escan": [
+			-67.5,
+			-22.5,
+			22.5,
+			67.5
+		],
 		"Calib": true,
 		"Omni": false,
 		"PanelAz":[0,180],
