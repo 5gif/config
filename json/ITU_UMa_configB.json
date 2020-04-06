@@ -5,7 +5,7 @@
 	"LAYOUTTYPE": 0,
 	"BSantennaType": "Undefined",
 	"UEantennaType": "Undefined",
-	"CarriersGHz ": 4,
+	"CarriersGHz ": 30.0,
 	"Duplexity": "TDD",
 	"BSHeight": 25,
 	"UEHeightout": 1.5,
@@ -28,7 +28,7 @@
 	"NumUEperCell": 30,
 	"INCARRatio": 0.2,
 	"INCARLossdB": 10,
-	"Out2IndoorLossDb": 10,
+	"Out2IndoorLossDb": 0.0,
 	"NCells": 19,
 	"BandwidthMHz": 40
 }

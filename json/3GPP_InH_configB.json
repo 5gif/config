@@ -3,7 +3,7 @@
 	"SCENARIO": "eMBB",
 	"CONFIG": "B",
 	"LAYOUTTYPE": 0,
-	"FcGHz": 30,
+	"FcGHz": 30.0,
 	"NumTRxP": 36,
 	"AntennaScheme": "32x4 MU-MIMO, Reciprocity based, 4T SRS",
 	"BS":{
@@ -14,7 +14,6 @@
 		"GainDb": 5,
 		"ElectricalTilt": [135.0,45.0],
 		"Escan": [-67.5,-22.5,22.5,67.5],
-		"Calib": true,
 		"Omni": false,
         "PanelAz": [0],
 		"PanelEl": [90],
@@ -22,8 +21,6 @@
 	    "EspacingVfactor": 0.5,
         "MechanicalTilt": 110,
         "Polarization":[45,-45]
-
-
 	},
 	"UE":{
 		"AntennaConfig": [2,4,2,1,2,1,1],
@@ -34,7 +31,6 @@
 		"ElectricalTilt": [135.0,45.0],
 		"Escan": [-67.5,-22.5,22.5,67.5],
 		"Omni": false,
-		"Calib": true,
         "PanelAz": [0,180],
 		"PanelEl": [90],
         "EspacingHfactor": 0.5,

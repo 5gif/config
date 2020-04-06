@@ -15,7 +15,6 @@ type Antenna struct {
 	Escan           []float64 `json:"Escan"`
 	GainDb          float64   `json:"GainDb"`
 	HBeamWidth      float64   `json:"HBeamWidth"`
-	Calib           bool      `json:"Calib"`
 	Omni            bool      `json:"Omni"`
 	SLAV            float64   `json:"SLAV"`
 	VBeamWidth      float64   `json:"VBeamWidth"`
@@ -89,7 +88,6 @@ func (i *NRconfig) DefaultNRconfig() {
 	i.NumTRxP = 57
 	i.AntennaScheme = "32x4 MU-MIMO, Reciprocity based, 4T SRS"
 	i.BS.AntennaConfig = []int{8, 8, 1, 1, 1, 2, 1}
-	i.BS.Calib = true
 	i.BS.SLAV = 30
 	i.BS.HBeamWidth = 65
 	i.BS.VBeamWidth = 65
@@ -111,7 +109,6 @@ func (i *NRconfig) DefaultNRconfig() {
 	i.UE.GainDb = 0
 	i.UE.ElectricalTilt = []float64{}
 	i.UE.Escan = []float64{}
-	i.UE.Calib = true
 	i.UE.Omni = true
 	i.UE.PanelAz = []float64{}
 	i.UE.PanelEl = []float64{}
@@ -183,7 +180,6 @@ func ReadNRConfig(configname string) (NRconfig, error) {
 // }
 
 func (ant *Antenna) GaindB(theta, phi float64) (aag map[int]vlib.MatrixF, bestBeamID int, Az, El float64) {
-
 	theta = Wrap180To180(theta)
 	phi = Wrap0To180(phi)
 	var ag float64
@@ -198,30 +194,28 @@ func (ant *Antenna) GaindB(theta, phi float64) (aag map[int]vlib.MatrixF, bestBe
 	nv := ant.AntennaConfig[0] / ant.AntennaConfig[5]
 	nh := ant.AntennaConfig[1] / ant.AntennaConfig[6]
 
-	var maxgain float64
+	maxgain := -1000.0
 	bestBeamID = 0
 	nbeams := len(ant.Escan) * len(ant.ElectricalTilt)
 	aag = make(map[int]vlib.MatrixF, nbeams)
-
-	c := 1.0 / float64(nv*nh)
+	var c = complex(math.Sqrt(1/float64(nv*nh)), 0)
 	for i := 0; i < len(dtilt); i++ { //  dtilt is a vector of Zenith Angles of the Beam Set
 		for j := 0; j < len(descan); j++ { // descan is a vector of Azimuth Angles of the Beam Set
 			beamid := j + len(descan)*i
 			sum = 0.0
+			phiP := -math.Cos(dtilt[i]*math.Pi/180) + math.Cos((phi-ant.MechanicalTilt+90)*math.Pi/180)
+			phiR := -math.Sin(dtilt[i]*math.Pi/180)*math.Sin(descan[j]*math.Pi/180) + math.Sin((phi-ant.MechanicalTilt+90)*math.Pi/180)*math.Sin(theta*math.Pi/180)
 			for m := 1; m <= nv; m++ {
 				for n := 1; n <= nh; n++ {
-					phiP := -math.Cos(dtilt[i]*math.Pi/180) + math.Cos(phi*math.Pi/180)
-					phiR := -math.Sin(dtilt[i]*math.Pi/180)*math.Sin(descan[j]*math.Pi/180) + math.Sin(phi*math.Pi/180)*math.Sin(theta*math.Pi/180)
 					w := cmplx.Exp(complex(0, 2*math.Pi*(float64(m-1)*vspace*phiP)))
 					v := cmplx.Exp(complex(0, 2*math.Pi*(float64(n-1)*hspace*phiR)))
-					sum = sum + w*v
+					sum = sum + c*w*v
 				}
 			}
 			txRUGains := vlib.NewMatrixF(ant.AntennaConfig[5], ant.AntennaConfig[6])
 			for k := 0; k < ant.AntennaConfig[5]; k++ {
 				for l := 0; l < ant.AntennaConfig[6]; l++ {
-					txRUGains[k][l] = ag + (10 * math.Log10(c*math.Pow(cmplx.Abs(sum), 2))) // Composite Beam Gain + Antenna Element Gain
-					_ = ag
+					txRUGains[k][l] = ag + (10 * math.Log10(math.Pow(cmplx.Abs(sum), 2))) // Composite Beam Gain + Antenna Element Gain
 					temp := txRUGains[k][l]
 					if maxgain < temp {
 						maxgain = temp

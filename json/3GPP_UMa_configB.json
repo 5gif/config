@@ -7,7 +7,7 @@
 	"NumTRxP": 57,
 	"AntennaScheme": "32x4 MU-MIMO, Reciprocity based, 4T SRS",
 	"BS":{
-		"AntennaConfig": [4,8,2,2,2,1,1],
+		"AntennaConfig": [4,8,2,1,1,1,1],
 		"SLAV": 30,
 	    "HBeamWidth": 65,
 	    "VBeamWidth": 65,
@@ -17,7 +17,6 @@
         "MechanicalTilt": 90,
 		"ElectricalTilt": [157.5,112.5],
 		"Escan": [-56.25,-33.75,-11.25,11.25,33.75,56.25],
-		"Calib": true,
 		"Omni": false,
 		"PanelAz": [0],
 		"PanelEl": [90]
@@ -38,7 +37,6 @@
 			22.5,
 			67.5
 		],
-		"Calib": true,
 		"Omni": false,
 		"PanelAz":[0,180],
 		"PanelEl":[90]
