@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"math"
 
-	log "github.com/Sirupsen/logrus"
+	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 	"github.com/wiless/vlib"
 )
