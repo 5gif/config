@@ -6,7 +6,7 @@ import (
 	"os"
 	"reflect"
 
-	log "github.com/Sirupsen/logrus"
+	log "github.com/sirupsen/logrus"
 )
 
 // SwitchBack ...
