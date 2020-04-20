@@ -25,6 +25,7 @@ var CurrDIR string
 type AppSetting struct {
 	INdir          string `json:"inputdir"`
 	OUTdir         string `json:"outputdir"`
+	SFdir          string `json:"shadowdir"`
 	ITUfname       string `json:"itu"`
 	NRfname        string `json:"nr"`
 	SIMfname       string `json:"sim"`
