@@ -8,8 +8,6 @@ import (
 	"os"
 
 	"github.com/spf13/viper"
-	"github.com/wiless/cellular/antenna"
-	"github.com/wiless/vlib"
 )
 
 // InDIR This is a comment
@@ -65,11 +63,11 @@ func (app *AppSetting) FromJSON(fname string) {
 }
 
 // Setup single big quick function
-func Setup(inputcfg string) (ITUconfig, NRconfig, SIMconfig, antenna.SettingAAS, error) {
+func Setup(inputcfg string) (ITUconfig, NRconfig, SIMconfig, error) {
 	var app AppSetting
 	app.FromJSON(inputcfg)
 	Appcfg, err := app.LoadApp()
-	return Appcfg.ITUcfg, Appcfg.NRcfg, Appcfg.SIMcfg, Appcfg.AAScfg, err
+	return Appcfg.ITUcfg, Appcfg.NRcfg, Appcfg.SIMcfg, err
 }
 
 // ReadCfgSettings reads all the configuration for the app
@@ -121,13 +119,6 @@ func (app *AppSetting) LoadApp() (*AppConfigs, error) {
 	SIMcfg.SetSIMconfig(ITUcfg, NRcfg)
 	log.Info("Loading SIM Config ..done")
 
-	var AAS antenna.SettingAAS
-	if _, err := os.Stat("sector.json"); os.IsNotExist(err) {
-		// path/to/whatever does not exist
-		log.Fatal("Unable to find sector.json")
-	} else {
-		vlib.LoadStructure("sector.json", &AAS)
-	}
 	/// ----- DONE loading all the ITU, 3GPP ,  SimConfig and related Antenna config
 	SwitchBack()
 
@@ -144,7 +135,6 @@ func (app *AppSetting) LoadApp() (*AppConfigs, error) {
 	DefaultApp.ITUcfg = ITUcfg
 	DefaultApp.NRcfg = NRcfg
 	DefaultApp.SIMcfg = SIMcfg
-	DefaultApp.AAScfg = AAS
 	// DefaultApp.Channelcfg = Channelcfg
 
 	return &DefaultApp, err

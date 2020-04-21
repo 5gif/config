@@ -1,9 +1,5 @@
 package config
 
-import (
-	"github.com/wiless/cellular/antenna"
-)
-
 // //SIMconfig  Struct for the app parameteres
 // type SIMconfig struct {
 // 	NCells        int
@@ -29,7 +25,6 @@ type AppConfigs struct {
 	ITUcfg ITUconfig
 	NRcfg  NRconfig
 	SIMcfg SIMconfig
-	AAScfg antenna.SettingAAS
 }
 
 // DefaultApp Global variable of all Configurations used in the Application
