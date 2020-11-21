@@ -1,6 +1,8 @@
 package config
 
 import (
+	"path/filepath"
+
 	"github.com/5gif/aas"
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
@@ -76,18 +78,19 @@ func (i *NRconfig) DefaultNRconfig() {
 // Save ...
 func (i *NRconfig) Save() {
 
-	SwitchOutput()
-	vlib.SaveStructure(i, i.fname, true)
-	SwitchBack()
+	// SwitchOutput()
+	fname := filepath.Base(i.fname)
+	vlib.SaveStructure(i, fname, true)
+	// SwitchBack()
 	// os.Chdir(CurrDIR)
 }
 
 func (i *NRconfig) Read(f string) error {
 	//i.SetDefaults()
 	i.fname = f
-	viper.AddConfigPath(InDIR)
+	//viper.AddConfigPath(InDIR)
 	// viper.SetConfigName(f)
-	viper.SetConfigFile(InDIR + "/" + f)
+	viper.SetConfigFile(f)
 	viper.SetConfigType("json")
 	err := viper.ReadInConfig()
 	if err != nil {

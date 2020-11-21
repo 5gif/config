@@ -3,16 +3,14 @@ package config
 import (
 	"encoding/json"
 	"fmt"
-	"os"
 	"reflect"
-
-	log "github.com/sirupsen/logrus"
 )
 
-// SwitchBack ...
-func SwitchBack() {
-	os.Chdir(CurrDIR)
-}
+// // SwitchBack ...
+// func SwitchBack() {
+
+// 	os.Chdir(CurrDIR)
+// }
 
 // PrintStructsPretty ...
 func PrintStructsPretty(c interface{}) {
@@ -24,17 +22,17 @@ func PrintStructsPretty(c interface{}) {
 	}
 }
 
-// SwitchInput ...
-func SwitchInput() {
-	// GOPATH := os.Getenv("GOPATH")
-	// InDIR = GOPATH + "/src/github.com/5gif/" + indir
-	log.Println("Switching 2 Input : ", InDIR)
-	os.Chdir(InDIR)
-}
+// // SwitchInput ...
+// func SwitchInput() {
+// 	// GOPATH := os.Getenv("GOPATH")
+// 	// InDIR = GOPATH + "/src/github.com/5gif/" + indir
+// 	log.Println("Switching 2 Input : ", InDIR)
+// 	os.Chdir(InDIR)
+// }
 
-// SwitchOutput ...
-func SwitchOutput() {
-	// GOPATH := os.Getenv("GOPATH")
-	log.Println("Switching 2 Output : ", OutDIR)
-	os.Chdir(OutDIR)
-}
+// // SwitchOutput ...
+// func SwitchOutput() {
+// 	// GOPATH := os.Getenv("GOPATH")
+// 	log.Println("Switching 2 Output : ", OutDIR)
+// 	os.Chdir(OutDIR)
+// }

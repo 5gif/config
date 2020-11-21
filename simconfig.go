@@ -56,18 +56,19 @@ func (i *SIMconfig) SetDefaults() {
 
 // Save ...
 func (s *SIMconfig) Save() {
-	SwitchOutput()
+	// SwitchOutput()
+	// fname := filepath.Base(i.fname)
 	vlib.SaveStructure(s, s.Fname+".json", true)
-	SwitchBack()
+	// SwitchBack()
 
 }
 
 func (s *SIMconfig) Read(f string) error {
 	s.SetDefaults()
 	s.Fname = f
-	viper.AddConfigPath(InDIR)
+	// viper.AddConfigPath(InDIR)
 	// viper.SetConfigName(f)
-	viper.SetConfigFile(InDIR + "/" + f)
+	viper.SetConfigFile(f)
 	viper.SetConfigType("json")
 	err := viper.ReadInConfig()
 	if err != nil {
@@ -88,6 +89,11 @@ func ReadSIMConfig(configname string) (SIMconfig, error) {
 	// fmt.Println(InDIR)
 	err := cfg.Read(configname)
 	return cfg, err
+}
+
+func (s *SIMconfig) Init(itucfg ITUconfig, nrcfg NRconfig) {
+	s.SetSIMconfig(itucfg, nrcfg)
+
 }
 
 // SetSIMconfig reads all the configuration for the app
@@ -126,7 +132,7 @@ func (s *SIMconfig) SetSIMconfig(itucfg ITUconfig, nrcfg NRconfig) {
 	// TxPowerDbm := viper.GetFloat64("TxpowerDBm")
 	s.CellRadius = itucfg.ISD / math.Sqrt(3.0)
 	s.ISD = itucfg.ISD
-	log.Infof("SIMconfig Initialized : %#v", s)
+
 	// return C1, CellRadius, CarriersGHz
 }
 
@@ -154,7 +160,7 @@ func (s *SIMconfig) ReadSIMconfig(configname string, indir string) {
 
 //SaveSIMconfig ....
 func (s *SIMconfig) SaveSIMconfig() {
-	SwitchOutput()
+	// SwitchOutput()
 	vlib.SaveStructure(s, s.Fname, true)
-	SwitchBack()
+	// SwitchBack()
 }

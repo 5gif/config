@@ -1,20 +1,20 @@
 package config
 
 import (
-	"os"
+	"path/filepath"
 
 	log "github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 	"github.com/wiless/vlib"
 )
 
-// SetDir sets the directory
-func SetDir(in, out string) {
-	CurrDIR, _ = os.Getwd()
-	InDIR = CurrDIR + "/" + in
-	OutDIR = CurrDIR + "/" + out
-	os.MkdirAll(OutDIR, os.ModePerm)
-}
+// // SetDir sets the directory
+// func SetDir(in, out string) {
+// 	CurrDIR, _ = os.Getwd()
+// 	InDIR = CurrDIR + "/" + in
+// 	OutDIR = CurrDIR + "/" + out
+// 	os.MkdirAll(OutDIR, os.ModePerm)
+// }
 
 // ITUconfig ....
 type ITUconfig struct {
@@ -72,10 +72,11 @@ func (i *ITUconfig) SetDefaults() {
 // Save config
 func (i *ITUconfig) Save() {
 
-	SwitchOutput()
+	//	SwitchOutput()
 	// vlib.SaveStructure(s, "OutputSetting.json", true)
-	vlib.SaveStructure(i, i.fname, true)
-	SwitchBack()
+	fname := filepath.Base(i.fname)
+	vlib.SaveStructure(i, fname, true)
+	//	SwitchBack()
 
 	// os.Chdir(CurrDIR)
 }
@@ -83,9 +84,9 @@ func (i *ITUconfig) Save() {
 func (i *ITUconfig) Read(f string) error {
 	i.SetDefaults()
 	i.fname = f
-	viper.AddConfigPath(InDIR)
+	// viper.AddConfigPath(InDIR) // ssk look for indir
 	// viper.SetConfigName(f)
-	viper.SetConfigFile(InDIR + "/" + f)
+	viper.SetConfigFile(f)
 	viper.SetConfigType("json")
 	err := viper.ReadInConfig()
 	if err != nil {
@@ -101,7 +102,7 @@ func (i *ITUconfig) Read(f string) error {
 // ReadITUConfig reads all the configuration for the app
 func ReadITUConfig(configname string) (ITUconfig, error) {
 	var cfg ITUconfig
-	// fmt.Println(InDIR)
+	// filepath.Base(configname)
 	err := cfg.Read(configname)
 	return cfg, err
 }
