@@ -69,6 +69,19 @@ func (i *ITUconfig) SetDefaults() {
 
 }
 
+// // Save config
+// func (i *ITUconfig) UnmarshalJSON(d []byte) error {
+// 	log.Println("Custom Unmarshaller ", string(d))
+// 	// err := json.Decoder(d, i)
+// 	r := bytes.NewBuffer(d)
+// 	dec := json.NewDecoder(r)
+// 	err := dec.Decode(i)
+// 	if err == nil && i.fname == "" {
+// 		i.SetFname("ITUcfg.json")
+// 	}
+// 	return err
+// }
+
 // Save config
 func (i *ITUconfig) Save() {
 
@@ -81,6 +94,14 @@ func (i *ITUconfig) Save() {
 	// os.Chdir(CurrDIR)
 }
 
+func (i *ITUconfig) SetFname(f string) {
+	i.fname = f
+
+}
+func (i ITUconfig) FileName() string {
+	return i.fname
+
+}
 func (i *ITUconfig) Read(f string) error {
 	i.SetDefaults()
 	i.fname = f

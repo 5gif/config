@@ -28,6 +28,14 @@ type NRconfig struct {
 	Vtilt                   float64
 }
 
+func (i *NRconfig) SetFname(f string) {
+	i.fname = f
+}
+
+func (i *NRconfig) FileName() string {
+	return i.fname
+}
+
 func (i *NRconfig) DefaultNRconfig() {
 
 	i.ENV = "RMa"

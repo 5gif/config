@@ -53,6 +53,9 @@ func (i *SIMconfig) SetDefaults() {
 	i.NumInterference = 0
 
 }
+func (s *SIMconfig) FileName() string {
+	return s.Fname + ".json"
+}
 
 // Save ...
 func (s *SIMconfig) Save() {

@@ -10,12 +10,15 @@ import (
 // App - contains nested structures of other config structures
 type App struct {
 	AppSetting
-	WorkingDir  string
+	WorkingDir string
+
 	ITUcfg      ITUconfig
 	NRcfg       NRconfig
 	SIMcfg      SIMconfig
 	loadsuccess bool
 }
+
+
 
 // LoadSetting
 func (app App) Ready() bool {
