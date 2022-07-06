@@ -8,15 +8,6 @@ import (
 	"github.com/spf13/viper"
 )
 
-// // InDIR This is a comment
-// var InDIR string
-
-// // OutDIR This is a comment
-// var OutDIR string
-
-// // CurrDIR This is a comment
-// var CurrDIR string
-
 // AppSetting setting to read and write config files
 type AppSetting struct {
 	INdir          string `json:"inputdir"`

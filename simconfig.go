@@ -11,29 +11,30 @@ import (
 
 // SIMconfig ...
 type SIMconfig struct {
-	SCENARIO        string  `json:"SCENARIO"`
-	SimulationTime  int     `json:"SimulationTime"`
-	FrameType       int     `json:"FrameType"`
-	SlotType        int     `json:"SlotType"`
-	NumUEperSlot    int     `json:"NumUEperSlot"`
-	NumInterference int     `json:"NumInterference"`
-	Fname           string  `json:"fname"`
-	ActiveBSCells   int     `json:"ActiveBSCells"`
-	ActiveUECells   int     `json:"ActiveUECells"`
-	Extended        bool    `json:"Extended"`
-	ForceAllLOS     bool    `json:"ForceAllLOS"`
-	ShadowLoss      bool    `json:"ShadowLoss"`
-	LogInfo         bool    `json:"LogInfo"`
-	UEcells         []int   `json:"UEcells"`
-	BScells         []int   `json:"BScells"`
-	TrueCells       int     `json:"TrueCells"`
-	SchedulerType   int     `json:"SchedulerType"`
-	IsDownLink      bool    `json:"IsDownLink"`
-	AntennaVTilt    float64 `json:"AntennaVTilt"`
-	CellRadius      float64 `json:"-"`
-	NCells          int     `json:"-"`
-	ISD             float64 `json:",omitempty"`
-	WrapAround      bool    `json:"WrapAround"`
+	SCENARIO        string   `json:"SCENARIO"`
+	SimulationTime  int      `json:"SimulationTime"`
+	FrameType       int      `json:"FrameType"`
+	SlotType        int      `json:"SlotType"`
+	NumUEperSlot    int      `json:"NumUEperSlot"`
+	NumInterference int      `json:"NumInterference"`
+	Fname           string   `json:"fname"`
+	ActiveBSCells   int      `json:"ActiveBSCells"`
+	ActiveUECells   int      `json:"ActiveUECells"`
+	Extended        bool     `json:"Extended"`
+	ForceAllLOS     bool     `json:"ForceAllLOS"`
+	ShadowLoss      bool     `json:"ShadowLoss"`
+	LogInfo         bool     `json:"LogInfo"`
+	UEcells         []int    `json:"UEcells"`
+	BScells         []int    `json:"BScells"`
+	TrueCells       int      `json:"TrueCells"`
+	SchedulerType   int      `json:"SchedulerType"`
+	IsDownLink      bool     `json:"IsDownLink"`
+	AntennaVTilt    float64  `json:"AntennaVTilt"`
+	CellRadius      float64  `json:"-"`
+	NCells          int      `json:"-"`
+	ISD             float64  `json:",omitempty"`
+	WrapAround      bool     `json:"WrapAround"`
+	MetaProperties  []string `json:"MetaProperties"`
 }
 
 //SetDefaults loads the default values for the simulation
@@ -54,14 +55,18 @@ func (i *SIMconfig) SetDefaults() {
 
 }
 func (s *SIMconfig) FileName() string {
-	return s.Fname + ".json"
+	return s.Fname
+}
+
+func (s *SIMconfig) SetFname(f string) {
+	s.Fname = f
 }
 
 // Save ...
 func (s *SIMconfig) Save() {
 	// SwitchOutput()
 	// fname := filepath.Base(i.fname)
-	vlib.SaveStructure(s, s.Fname+".json", true)
+	vlib.SaveStructure(s, s.Fname+".cfg", true)
 	// SwitchBack()
 
 }

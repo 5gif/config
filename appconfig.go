@@ -18,8 +18,6 @@ type App struct {
 	loadsuccess bool
 }
 
-
-
 // LoadSetting
 func (app App) Ready() bool {
 	return app.loadsuccess
@@ -42,6 +40,8 @@ func (app App) SwitchInput() {
 // SwitchOutput ...
 func (app App) SwitchOutput() {
 	// GOPATH := os.Getenv("GOPATH")
+	wd, _ := os.Getwd()
+	log.Println("Current WD : ", wd)
 	log.Println("Switching to Output DIR : ", app.OUTdir)
 	os.Chdir(app.OUTdir)
 }

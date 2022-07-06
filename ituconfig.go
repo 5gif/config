@@ -30,14 +30,14 @@ type ITUconfig struct {
 	UEHeightout         float64 `json:"UEHeightout"`
 	UEHeightin          float64 `json:"UEHeightin"`
 	TxPowerDbm          float64 `json:"TxPowerDbm"`
-	UETxDbm             int     `json:"UETxDbm"`
+	UETxDbm             float64 `json:"UETxDbm"`
 	BuildingTypeLoss    float64 `json:"BuildingTypeLoss"`
 	ISD                 float64 `json:"ISD"`
 	NumBSelements       int     `json:"NumBSelements"`
 	NumUEelements       int     `json:"NumUEelements"`
 	INDOORRatio         float64 `json:"INDOORRatio"`
-	IndoorSpeed         int     `json:"IndoorSpeed"`
-	Outdoorspeed        int     `json:"Outdoorspeed"`
+	IndoorSpeed         float64 `json:"IndoorSpeed"`
+	Outdoorspeed        float64 `json:"Outdoorspeed"`
 	BSNoiseFigureDb     float64 `json:"BSNoiseFigureDb"`
 	UENoiseFigureDb     float64 `json:"UENoiseFigureDb"`
 	BSAntennaEleGainDbi int     `json:"BSAntennaEleGainDbi"`
